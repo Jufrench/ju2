@@ -1,2 +1,2 @@
-Version 2 of my personal website portfolio
+Version 2 of my personal website portfolio\
 *In Progress*
