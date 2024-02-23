@@ -136,55 +136,105 @@ const links = [
   },
 ]
 
+// element {
+// 	background: royalblue;
+// 	position: absolute;
+// 	height: 97%;
+// 	width: 97%;
+// 	top: 50%;
+// 	left: 50%;
+// 	transform: translate(-50%, -50%);
+// 	z-index: 999999999;
+// 	box-shadow: 0px 0px 5px 4px black;
+// }
+
+const mainStyles = {
+  // background: "royalblue",
+  // position: "absolute" as Position,
+  // position: "absolute" as any,
+  // height: "97%",
+  // width: "97%",
+  // top: "50%",
+  // left: "50%",
+  // transform: "translate(-50%, -50%)",
+}
+
+const mainStyles2 = {
+  position: "absolute" as any,
+  top: 40,
+  bottom: 40,
+  right: 40,
+  left: 40,
+  boxShadow: "0px 0px 10px 10px white",
+  background: "#f0f0f0",
+}
+
+const contentWrapper = {
+  border: "2px solid dodgerblue",
+  height: "95vh",
+  display: "grid",
+  gridTemplateColumns: "repeat(6, 1fr)",
+  gridTemplateRows: "repeat(5, 1fr)",
+  gap: "16px",
+}
+
+const gridItem = {
+  border: "1px solid tomato"
+}
+
+const gridItemInner = {
+  border: "1px solid dodgerblue"
+}
+
+const aboutMe = {
+  gridColumn: "1 / 2",
+  gridRow: "1 / 4",
+  display: "grid",
+  gap: "16px",
+  gridTemplateRows: "repeat(3, 1fr)",
+}
+
+const aboutMe2 = {
+  gridColumn: "1 / 4",
+  gridRow: "1 / 4",
+}
+
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={doclistStyles}>
-        {docLinks.map(doc => (
-          <li key={doc.url} style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
+    <main style={mainStyles}>
+      {/* <div style={{ padding: "10px", display: "grid", border: "2px solid limegreen", height: "97%"}}> */}
+      <div style={contentWrapper}>
+        {/* <h1 style={{ color: "darkorange"}}>julian dev portfolio</h1> */}
+        {/* <div style={{...gridItem, ...aboutMe}}>
+          <div style={{background: "chocolate", gridRow: "1 / 3"}}>one.1</div>
+          <div style={{background: "darkred"}}>one.2</div>
+        </div> */}
+        <div style={{...gridItem, ...aboutMe2}}>One</div>
+        <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
+        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "1 / 3"}}>Three</div>
+        {/* <div style={{...gridItem, display: "grid", gap: "16px"}}>
+          <div style={gridItemInner}></div>
+          <div style={{...gridItemInner, background: "dodgerblue"}}></div>
+        </div> */}
+        {/* <div style={gridItem}>three</div> */}
+        {/* <div style={gridItem}>four</div> */}
+        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+        {/* <div style={gridItem}>five</div> */}
+        {/* <div style={{...gridItem, gridRow: "2 / 5", gridColumn: "4 / 5"}}>Five</div> */}
+        <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>Five</div>
+        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 5"}}>six</div>
+        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "3 / 6"}}>seven</div>
+        {/* <div style={gridItem}>seven</div> */}
+        <div style={{...gridItem, gridColumn: "3 / 5"}}>eight</div>
+        {/* <div style={{...gridItem, gridColumn: "3 / 5"}}>nine</div> */}
+      </div>
     </main>
+    
+    // <main style={mainStyles2}>
+    //   <div>
+    //     <h1>Second Version</h1>
+    //   </div>
+    // </main>
   )
 }
 

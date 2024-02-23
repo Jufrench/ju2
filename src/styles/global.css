@@ -1,0 +1,51 @@
+/* FIRST VERSION
+=================== */
+html::before {
+  width: 10px;
+  height: 100%;
+  content: '';
+  background: tomato;
+  position: fixed;
+  left: 0;
+}
+
+html::after {
+  width: 10px;
+  height: 100%;
+  content: '';
+  background: tomato;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+body {
+  padding: 10px;
+}
+
+body::before {
+  height: 10px;
+  width: 100%;
+  content: '';
+  background: tomato;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body::after {
+  height: 10px;
+  width: 100%;
+  content: '';
+  background: tomato;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* SECOND VERSION
+=================== */
+/* body {
+  background: black;
+} */
