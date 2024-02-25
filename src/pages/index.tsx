@@ -202,31 +202,34 @@ const aboutMe2 = {
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={mainStyles}>
-      {/* <div style={{ padding: "10px", display: "grid", border: "2px solid limegreen", height: "97%"}}> */}
       <div style={contentWrapper}>
-        {/* <h1 style={{ color: "darkorange"}}>julian dev portfolio</h1> */}
-        {/* <div style={{...gridItem, ...aboutMe}}>
-          <div style={{background: "chocolate", gridRow: "1 / 3"}}>one.1</div>
-          <div style={{background: "darkred"}}>one.2</div>
-        </div> */}
-        <div style={{...gridItem, ...aboutMe2}}>One</div>
+        {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
         <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
         <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "1 / 3"}}>Three</div>
-        {/* <div style={{...gridItem, display: "grid", gap: "16px"}}>
-          <div style={gridItemInner}></div>
-          <div style={{...gridItemInner, background: "dodgerblue"}}></div>
-        </div> */}
-        {/* <div style={gridItem}>three</div> */}
-        {/* <div style={gridItem}>four</div> */}
         <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-        {/* <div style={gridItem}>five</div> */}
-        {/* <div style={{...gridItem, gridRow: "2 / 5", gridColumn: "4 / 5"}}>Five</div> */}
-        <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>Five</div>
+        <div className="gradient" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>Five</div>
         <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 5"}}>six</div>
         <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "3 / 6"}}>seven</div>
-        {/* <div style={gridItem}>seven</div> */}
-        <div style={{...gridItem, gridColumn: "3 / 5"}}>eight</div>
-        {/* <div style={{...gridItem, gridColumn: "3 / 5"}}>nine</div> */}
+        <div style={{...gridItem, gridColumn: "3 / 5"}}>eight</div> */}
+        {/* ======================================= */}
+        {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
+        <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
+        <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 3"}}>Three</div>
+        <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 3"}}>Three.1</div>
+        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 4"}}>six</div>
+        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>seven</div>
+        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div> */}
+        {/* ======================================= */}
+        <div style={{...gridItem, ...aboutMe2}}>One</div>
+        <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "1 / 4"}}>Two</div>
+        <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 2"}}>Three</div>
+        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+        {/* <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 3"}}>Three</div> */}
+        <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "2 / 4"}}>six</div>
+        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "4 / 6"}}>seven</div>
+        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div>
+        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 5"}}>eight</div>
       </div>
     </main>
     
