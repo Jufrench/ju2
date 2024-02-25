@@ -173,31 +173,35 @@ const contentWrapper = {
   border: "2px solid dodgerblue",
   height: "95vh",
   display: "grid",
-  gridTemplateColumns: "repeat(6, 1fr)",
-  gridTemplateRows: "repeat(5, 1fr)",
-  gap: "16px",
+  // gridTemplateColumns: "repeat(6, 1fr)",
+  // gridTemplateRows: "repeat(5, 1fr)",
+  // =======================================
+  // gridTemplateColumns: "repeat(5, 1fr)",
+  // gridTemplateRows: "repeat(4, 1fr)",
+  // =======================================
+  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateRows: "repeat(4, 1fr)",
+  // =======================================
+  gap: "1.5rem",
 }
 
 const gridItem = {
-  border: "1px solid tomato"
+  border: "1px solid #333",
+  padding: "1.5rem",
+  background: "#333"
 }
 
-const gridItemInner = {
-  border: "1px solid dodgerblue"
+const gridItemContent = {
+  height: "100%",
+  // background: "#707070",
+  color: "#fff"
 }
 
-const aboutMe = {
-  gridColumn: "1 / 2",
-  gridRow: "1 / 4",
-  display: "grid",
-  gap: "16px",
-  gridTemplateRows: "repeat(3, 1fr)",
+const gridItemContentHeading = {
+  margin: "0" ,
 }
 
-const aboutMe2 = {
-  gridColumn: "1 / 4",
-  gridRow: "1 / 4",
-}
+
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -221,15 +225,69 @@ const IndexPage: React.FC<PageProps> = () => {
         <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>seven</div>
         <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div> */}
         {/* ======================================= */}
-        <div style={{...gridItem, ...aboutMe2}}>One</div>
+        {/* I like this one - 6 columns, 5 rows */}
+        {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
         <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "1 / 4"}}>Two</div>
         <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 2"}}>Three</div>
         <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-        {/* <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 3"}}>Three</div> */}
         <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "2 / 4"}}>six</div>
-        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "4 / 6"}}>seven</div>
-        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div>
-        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 5"}}>eight</div>
+        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
+        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "4 / 5"}}>eight top</div>
+        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>eight bottom</div> */}
+        {/* ======================================= */}
+        {/* I like this one - 5 columns, 4 rows */}
+        {/* <div style={{...gridItem, gridColumn: "1 / 4", gridRow: "1 / 4"}}>One</div>
+        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>Two</div>
+        <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 2"}}>Three</div>
+        <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "2 / 4"}}>three</div>
+        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
+        <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "4 / 6"}}>eight</div> */}
+        {/* ======================================= */}
+        {/* Best so far - 4 columns, 4 rows */}
+        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}>
+          <header style={gridItemContent}>
+            <h1 style={gridItemContentHeading}>About Me</h1>
+          </header>
+        </div>
+        <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}>
+          <section style={gridItemContent}>
+            <h2 style={gridItemContentHeading}>Two</h2>
+          </section>
+        </div>
+        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
+          <section style={gridItemContent}>
+            <h2 style={gridItemContentHeading}>Three</h2>
+            </section>
+        </div>
+        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}>
+          <section style={gridItemContent}>
+            <h2 style={gridItemContentHeading}>Four</h2>
+          </section>
+        </div>
+        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}>
+          <section style={gridItemContent}>
+            <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
+            <div>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Node.js</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>
+          <section style={gridItemContent}>
+            <h2 style={gridItemContentHeading}>Six</h2>
+          </section>
+        </div>
+        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}>
+          <footer style={gridItemContent}>
+            <h2 style={gridItemContentHeading}>Seven</h2>
+          </footer>
+        </div>
       </div>
     </main>
     
