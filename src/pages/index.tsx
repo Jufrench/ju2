@@ -42,9 +42,9 @@ const mainWrapper: React.CSSProperties = {
   // gridTemplateColumns: "repeat(5, 1fr)",
   // gridTemplateRows: "repeat(4, 1fr)",
   // =======================================
-  gridTemplateColumns: "repeat(4, 1fr)",
+  // gridTemplateColumns: "repeat(4, 1fr)",
   // gridTemplateRows: "repeat(4, 1fr)",
-  gridTemplateRows: "repeat(4, minmax(0, 1fr))",
+  // gridTemplateRows: "repeat(4, minmax(0, 1fr))",
   // =======================================
   gap: "1.25rem",
 }
@@ -119,8 +119,8 @@ const IndexPage: React.FC<PageProps> = () => {
       <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "4 / 6"}}>eight</div> */}
       {/* ======================================= */}
       {/* Best so far - 4 columns, 4 rows */}
-      <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}>
-      {/* <header className="intro" style={{...gridItem}}> */}
+      {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
+      <header className="intro" style={{...gridItem}}>
         {/* <header style={gridItemContent}> */}
           <h1 style={{ marginTop: "50px", display: "flex", flexDirection: "column"}}>
             <span>Hello!</span>
@@ -129,29 +129,29 @@ const IndexPage: React.FC<PageProps> = () => {
           </h1>
         {/* </header> */}
       </header>
-      <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}>
-      {/* <section className="theme" style={{...gridItem}}> */}
+      {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
+      <section className="theme" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
           <div style={gridItemContentBody}>Coming soon...</div>
         {/* </section> */}
       </section>
-      {/* <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}> */}
-      <section className="settings" style={{...gridItem}}>
+      <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
+      {/* <section className="settings" style={{...gridItem}}> */}
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Three</h2>
           <div style={gridItemContentBody}>Buttons will be here</div>
         {/* </section> */}
       </section>
-      <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}>
-      {/* <aside className="projects" style={{...gridItem}}> */}
+      {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
+      <aside className="projects" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Four</h2>
           <div style={gridItemContentBody}>Projects here</div>
         {/* </section> */}
       </aside>
-      <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}>
-      {/* <section className="tech" style={{...gridItem}}> */}
+      {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
+      <section className="tech" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
           <ul>
@@ -166,8 +166,8 @@ const IndexPage: React.FC<PageProps> = () => {
           </ul>
         {/* </section> */}
       </section >
-      <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>
-      {/* <section className="block-6" style={{...gridItem}}> */}
+      {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
+      <section className="block-6" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Six</h2>
           <div style={gridItemContentBody}>
@@ -175,8 +175,8 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         {/* </section> */}
       </section>
-      <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}>
-      {/* <footer className="contact" style={{...gridItem}}> */}
+      {/* <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}> */}
+      <footer className="contact" style={{...gridItem}}>
         {/* <footer style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Find Me</h2>
           <ul style={contactStyles}>

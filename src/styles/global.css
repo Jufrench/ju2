@@ -21,11 +21,11 @@ body {
 @media screen and (min-width: 768px) {
   .main-wrapper {
     border: 2px solid dodgerblue;
-    /* grid-template-columns: "repeat(4, 1fr)"; */
-    /* grid-template-rows: "repeat(4, 1fr)"; */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
   }
   
-  /* .intro {
+  .intro {
     grid-column: 1 / 3;
     grid-row: 1 / 4;
   }
@@ -58,5 +58,5 @@ body {
   .contact {
     grid-column: 4 / 5;
     grid-row: 4 / 5;
-  } */
+  }
 }
