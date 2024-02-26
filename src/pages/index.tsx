@@ -1,43 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
 const linkStyle = {
   color: "#8954A8",
   fontWeight: "bold",
@@ -53,101 +16,6 @@ const docLinkStyle = {
   marginRight: 12,
 }
 
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLinks = [
-  {
-    text: "TypeScript Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-    color: "#8954A8",
-  },
-  {
-    text: "GraphQL Typegen Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/",
-    color: "#8954A8",
-  }
-]
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-// element {
-// 	background: royalblue;
-// 	position: absolute;
-// 	height: 97%;
-// 	width: 97%;
-// 	top: 50%;
-// 	left: 50%;
-// 	transform: translate(-50%, -50%);
-// 	z-index: 999999999;
-// 	box-shadow: 0px 0px 5px 4px black;
-// }
-
 const mainStyles = {
   // background: "royalblue",
   // position: "absolute" as Position,
@@ -159,20 +27,15 @@ const mainStyles = {
   // transform: "translate(-50%, -50%)",
 }
 
-const mainStyles2 = {
-  position: "absolute" as any,
-  top: 40,
-  bottom: 40,
-  right: 40,
-  left: 40,
-  boxShadow: "0px 0px 10px 10px white",
-  background: "#f0f0f0",
-}
-
-const contentWrapper = {
-  border: "2px solid dodgerblue",
-  height: "95vh",
+const mainWrapper: React.CSSProperties = {
   display: "grid",
+  width: "97%",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  // =======================================
+  height: "95vh",
   // gridTemplateColumns: "repeat(6, 1fr)",
   // gridTemplateRows: "repeat(5, 1fr)",
   // =======================================
@@ -180,25 +43,20 @@ const contentWrapper = {
   // gridTemplateRows: "repeat(4, 1fr)",
   // =======================================
   gridTemplateColumns: "repeat(4, 1fr)",
-  gridTemplateRows: "repeat(4, 1fr)",
+  // gridTemplateRows: "repeat(4, 1fr)",
+  gridTemplateRows: "repeat(4, minmax(0, 1fr))",
   // =======================================
-  gap: "1.5rem",
+  gap: "1.25rem",
 }
 
 const gridItem = {
   border: "1px solid #333",
   padding: "1.5rem",
-  background: "#474747"
-  // background: "#5b5b5b"
+  background: "rgba(71,71,71,0.9)"
 };
 
-// const gridItemContent = {
-//   height: "100%",
-//   color: "#fff"
-// };
-
 const gridItemContentHeading = {
-  margin: "0" ,
+  // margin: "0" ,
 };
 
 const gridItemContentBody = {
@@ -222,104 +80,113 @@ const contactAnchorItemStyles = {
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={mainStyles}>
-      <div style={contentWrapper}>
-        {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
-        <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
-        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "1 / 3"}}>Three</div>
-        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-        <div className="gradient" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>Five</div>
-        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 5"}}>six</div>
-        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "3 / 6"}}>seven</div>
-        <div style={{...gridItem, gridColumn: "3 / 5"}}>eight</div> */}
-        {/* ======================================= */}
-        {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
-        <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
-        <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 3"}}>Three</div>
-        <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 3"}}>Three.1</div>
-        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 4"}}>six</div>
-        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>seven</div>
-        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div> */}
-        {/* ======================================= */}
-        {/* I like this one - 6 columns, 5 rows */}
-        {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
-        <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "1 / 4"}}>Two</div>
-        <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 2"}}>Three</div>
-        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-        <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "2 / 4"}}>six</div>
-        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
-        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "4 / 5"}}>eight top</div>
-        <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>eight bottom</div> */}
-        {/* ======================================= */}
-        {/* I like this one - 5 columns, 4 rows */}
-        {/* <div style={{...gridItem, gridColumn: "1 / 4", gridRow: "1 / 4"}}>One</div>
-        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>Two</div>
-        <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 2"}}>Three</div>
-        <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "2 / 4"}}>three</div>
-        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
-        <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "4 / 6"}}>eight</div> */}
-        {/* ======================================= */}
-        {/* Best so far - 4 columns, 4 rows */}
-        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}>
-          {/* <header style={gridItemContent}> */}
-            <h1 style={gridItemContentHeading}>About Me</h1>
-          {/* </header> */}
-        </div>
-        <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}>
-          {/* <section style={gridItemContent}> */}
-            <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
-            <div style={gridItemContentBody}>Coming soon...</div>
-          {/* </section> */}
-        </div>
-        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
-          {/* <section style={gridItemContent}> */}
-            <h2 style={gridItemContentHeading}>Three</h2>
-            <div style={gridItemContentBody}>Buttons will be here</div>
-          {/* </section> */}
-        </div>
-        <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}>
-          {/* <section style={gridItemContent}> */}
-            <h2 style={gridItemContentHeading}>Four</h2>
-            <div style={gridItemContentBody}>Projects here</div>
-          {/* </section> */}
-        </div>
-        <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}>
-          {/* <section style={gridItemContent}> */}
-            <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
-            <div>
-              <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>Node.js</li>
-              </ul>
-            </div>
-          {/* </section> */}
-        </div>
-        <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>
-          {/* <section style={gridItemContent}> */}
-            <h2 style={gridItemContentHeading}>Six</h2>
-            <div style={gridItemContentBody}>
-              hello
-            </div>
-          {/* </section> */}
-        </div>
-        <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}>
-          {/* <footer style={gridItemContent}> */}
-            <h2 style={gridItemContentHeading}>Find Me</h2>
-            <div style={gridItemContentBody}>
-              <ul style={contactStyles}>
-                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Github</a></li>
-                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">LinkedIn</a></li>
-                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Email</a></li>
-                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Ko-Fi</a></li>
-              </ul>
-            </div>
-          {/* </footer> */}
-        </div>
-      </div>
+    <main className="main-wrapper" style={mainWrapper}>
+      {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
+      <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
+      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "1 / 3"}}>Three</div>
+      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+      <div className="gradient" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>Five</div>
+      <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 5"}}>six</div>
+      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "3 / 6"}}>seven</div>
+      <div style={{...gridItem, gridColumn: "3 / 5"}}>eight</div> */}
+      {/* ======================================= */}
+      {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
+      <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
+      <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 3"}}>Three</div>
+      <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 3"}}>Three.1</div>
+      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+      <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 4"}}>six</div>
+      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>seven</div>
+      <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div> */}
+      {/* ======================================= */}
+      {/* I like this one - 6 columns, 5 rows */}
+      {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
+      <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "1 / 4"}}>Two</div>
+      <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 2"}}>Three</div>
+      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+      <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "2 / 4"}}>six</div>
+      <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
+      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "4 / 5"}}>eight top</div>
+      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>eight bottom</div> */}
+      {/* ======================================= */}
+      {/* I like this one - 5 columns, 4 rows */}
+      {/* <div style={{...gridItem, gridColumn: "1 / 4", gridRow: "1 / 4"}}>One</div>
+      <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>Two</div>
+      <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 2"}}>Three</div>
+      <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "2 / 4"}}>three</div>
+      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
+      <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
+      <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "4 / 6"}}>eight</div> */}
+      {/* ======================================= */}
+      {/* Best so far - 4 columns, 4 rows */}
+      <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}>
+      {/* <header className="intro" style={{...gridItem}}> */}
+        {/* <header style={gridItemContent}> */}
+          <h1 style={{ marginTop: "50px", display: "flex", flexDirection: "column"}}>
+            <span>Hello!</span>
+            <span>My name is Julian French</span>
+            <span>I'm a Web Developer based in Kansas City!</span>
+          </h1>
+        {/* </header> */}
+      </header>
+      <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}>
+      {/* <section className="theme" style={{...gridItem}}> */}
+        {/* <section style={gridItemContent}> */}
+          <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
+          <div style={gridItemContentBody}>Coming soon...</div>
+        {/* </section> */}
+      </section>
+      {/* <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}> */}
+      <section className="settings" style={{...gridItem}}>
+        {/* <section style={gridItemContent}> */}
+          <h2 style={gridItemContentHeading}>Three</h2>
+          <div style={gridItemContentBody}>Buttons will be here</div>
+        {/* </section> */}
+      </section>
+      <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}>
+      {/* <aside className="projects" style={{...gridItem}}> */}
+        {/* <section style={gridItemContent}> */}
+          <h2 style={gridItemContentHeading}>Four</h2>
+          <div style={gridItemContentBody}>Projects here</div>
+        {/* </section> */}
+      </aside>
+      <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}>
+      {/* <section className="tech" style={{...gridItem}}> */}
+        {/* <section style={gridItemContent}> */}
+          <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Vue</li>
+            <li>Ember</li>
+            <li>Node.js</li>
+            <li>Webpack</li>
+            <li>Gatsby</li>
+          </ul>
+        {/* </section> */}
+      </section >
+      <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>
+      {/* <section className="block-6" style={{...gridItem}}> */}
+        {/* <section style={gridItemContent}> */}
+          <h2 style={gridItemContentHeading}>Six</h2>
+          <div style={gridItemContentBody}>
+            hello
+          </div>
+        {/* </section> */}
+      </section>
+      <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}>
+      {/* <footer className="contact" style={{...gridItem}}> */}
+        {/* <footer style={gridItemContent}> */}
+          <h2 style={gridItemContentHeading}>Find Me</h2>
+          <ul style={contactStyles}>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Github</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">LinkedIn</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Email</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Ko-Fi</a></li>
+          </ul>
+        {/* </footer> */}
+      </footer>
     </main>
   )
 }
