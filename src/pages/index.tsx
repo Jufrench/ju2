@@ -188,20 +188,37 @@ const contentWrapper = {
 const gridItem = {
   border: "1px solid #333",
   padding: "1.5rem",
-  background: "#333"
-}
+  background: "#474747"
+  // background: "#5b5b5b"
+};
 
-const gridItemContent = {
-  height: "100%",
-  // background: "#707070",
-  color: "#fff"
-}
+// const gridItemContent = {
+//   height: "100%",
+//   color: "#fff"
+// };
 
 const gridItemContentHeading = {
   margin: "0" ,
-}
+};
 
+const gridItemContentBody = {
+  padding: "1rem",
+};
 
+const contactStyles = {
+  padding: "0",
+  margin: "0",
+  listStyleType: "none",
+};
+
+const contactItemStyles = {
+  marginTop: "6px",
+};
+
+const contactAnchorItemStyles = {
+  textDecoration: "none",
+  color: "#fff",
+};
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -246,27 +263,30 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* ======================================= */}
         {/* Best so far - 4 columns, 4 rows */}
         <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}>
-          <header style={gridItemContent}>
+          {/* <header style={gridItemContent}> */}
             <h1 style={gridItemContentHeading}>About Me</h1>
-          </header>
+          {/* </header> */}
         </div>
         <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}>
-          <section style={gridItemContent}>
-            <h2 style={gridItemContentHeading}>Two</h2>
-          </section>
+          {/* <section style={gridItemContent}> */}
+            <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
+            <div style={gridItemContentBody}>Coming soon...</div>
+          {/* </section> */}
         </div>
         <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
-          <section style={gridItemContent}>
+          {/* <section style={gridItemContent}> */}
             <h2 style={gridItemContentHeading}>Three</h2>
-            </section>
+            <div style={gridItemContentBody}>Buttons will be here</div>
+          {/* </section> */}
         </div>
         <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}>
-          <section style={gridItemContent}>
+          {/* <section style={gridItemContent}> */}
             <h2 style={gridItemContentHeading}>Four</h2>
-          </section>
+            <div style={gridItemContentBody}>Projects here</div>
+          {/* </section> */}
         </div>
         <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}>
-          <section style={gridItemContent}>
+          {/* <section style={gridItemContent}> */}
             <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
             <div>
               <ul>
@@ -276,26 +296,31 @@ const IndexPage: React.FC<PageProps> = () => {
                 <li>Node.js</li>
               </ul>
             </div>
-          </section>
+          {/* </section> */}
         </div>
         <div style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>
-          <section style={gridItemContent}>
+          {/* <section style={gridItemContent}> */}
             <h2 style={gridItemContentHeading}>Six</h2>
-          </section>
+            <div style={gridItemContentBody}>
+              hello
+            </div>
+          {/* </section> */}
         </div>
         <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}>
-          <footer style={gridItemContent}>
-            <h2 style={gridItemContentHeading}>Seven</h2>
-          </footer>
+          {/* <footer style={gridItemContent}> */}
+            <h2 style={gridItemContentHeading}>Find Me</h2>
+            <div style={gridItemContentBody}>
+              <ul style={contactStyles}>
+                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Github</a></li>
+                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">LinkedIn</a></li>
+                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Email</a></li>
+                <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Ko-Fi</a></li>
+              </ul>
+            </div>
+          {/* </footer> */}
         </div>
       </div>
     </main>
-    
-    // <main style={mainStyles2}>
-    //   <div>
-    //     <h1>Second Version</h1>
-    //   </div>
-    // </main>
   )
 }
 
