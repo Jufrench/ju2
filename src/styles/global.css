@@ -13,14 +13,14 @@ body {
 } */
 
 .main-wrapper {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* grid-template-columns: "1fr"; */
   /* grid-template-rows: "repeat(4, 1fr)"; */
 }
 
 @media screen and (min-width: 768px) {
   .main-wrapper {
-    border: 2px solid dodgerblue;
+    /* border: 2px solid dodgerblue; */
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, minmax(0, 1fr));
   }

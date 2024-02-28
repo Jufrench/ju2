@@ -50,9 +50,11 @@ const mainWrapper: React.CSSProperties = {
 }
 
 const gridItem = {
-  border: "1px solid #333",
+  // border: "1px solid #333",
   padding: "1.5rem",
-  background: "rgba(71,71,71,0.9)"
+  // background: "rgba(246,245,244,1.0)",
+  background: "#dddcdb",
+  borderRadius: "10px",
 };
 
 const gridItemContentHeading = {
@@ -70,12 +72,12 @@ const contactStyles = {
 };
 
 const contactItemStyles = {
-  marginTop: "6px",
+  // marginTop: "6px",
 };
 
 const contactAnchorItemStyles = {
-  textDecoration: "none",
-  color: "#fff",
+  // textDecoration: "none",
+  color: "unset"
 };
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -122,9 +124,9 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
       <header className="intro" style={{...gridItem}}>
         {/* <header style={gridItemContent}> */}
-          <h1 style={{ marginTop: "50px", display: "flex", flexDirection: "column"}}>
+          <h1 style={{ marginTop: "10%", display: "flex", flexDirection: "column"}}>
             <span>Hello!</span>
-            <span>My name is Julian French</span>
+            <span>My name is <span style={{color:"chocolate"}}>Julian French</span></span>
             <span>I'm a Web Developer based in Kansas City!</span>
           </h1>
         {/* </header> */}
@@ -133,20 +135,23 @@ const IndexPage: React.FC<PageProps> = () => {
       <section className="theme" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
-          <div style={gridItemContentBody}>Coming soon...</div>
+          <div style={gridItemContentBody}>Coming soon... 👀</div>
         {/* </section> */}
       </section>
       <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
       {/* <section className="settings" style={{...gridItem}}> */}
         {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>Three</h2>
-          <div style={gridItemContentBody}>Buttons will be here</div>
+          <h2 style={gridItemContentHeading}>...</h2>
+          <ul style={{...gridItemContentBody, columnCount: 2}}>
+            <button style={{ padding: "10px"}}>I don't do anything yet</button>
+            <button style={{ padding: "10px"}}>Me neither</button>
+          </ul>
         {/* </section> */}
       </section>
       {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
       <aside className="projects" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>Four</h2>
+          <h2 style={gridItemContentHeading}>...</h2>
           <div style={gridItemContentBody}>Projects here</div>
         {/* </section> */}
       </aside>
@@ -154,7 +159,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <section className="tech" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
-          <ul>
+          <ul style={{...gridItemContentBody, columnCount: 2, listStyleType: "none"}}>
             <li>HTML</li>
             <li>CSS</li>
             <li>JavaScript</li>
@@ -169,9 +174,9 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
       <section className="block-6" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>Six</h2>
+          <h2 style={gridItemContentHeading}>...</h2>
           <div style={gridItemContentBody}>
-            hello
+            Hey!
           </div>
         {/* </section> */}
       </section>
@@ -179,11 +184,11 @@ const IndexPage: React.FC<PageProps> = () => {
       <footer className="contact" style={{...gridItem}}>
         {/* <footer style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Find Me</h2>
-          <ul style={contactStyles}>
-            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Github</a></li>
-            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">LinkedIn</a></li>
-            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Email</a></li>
-            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="">Ko-Fi</a></li>
+          <ul style={{...contactStyles, ...gridItemContentBody, columnCount: 2}}>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.github.com/Jufrench">Github</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.linkedin.com/in/julesfrench/">LinkedIn</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="mailto:ju.french@gmail.com">Email</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://ko-fi.com/moijules">Ko-Fi</a></li>
           </ul>
         {/* </footer> */}
       </footer>
