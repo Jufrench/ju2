@@ -144,9 +144,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </h1>
           <h3 style={{ marginTop: "20px", fontWeight: "normal", lineHeight: "1.3"}}>
             I'm a collaborative Front-End Developer with a background in music
-            and foreign languages. My experience spans several JavaScript technologies,
-            including TypeScript, React, Node.js, Gatsby, and more.
-            One of my goals is to always strive to have a positive outlook on life,
+            and foreign languages. One of my goals is to always strive to have a positive outlook on life,
             and I hope to share that positivity with any and everyone!</h3>
         {/* </header> */}
       </header>
@@ -179,7 +177,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 bottom: "22px",
                 height: "15%",
                 width: "calc(100% - 44px)",
-                background: "rgba(246,245,244,1.0)",
+                background: "rgba(246,245,244,0.7)",
                 display: "flex",
                 padding: "10px"
               }}
@@ -188,8 +186,8 @@ const IndexPage: React.FC<PageProps> = () => {
               return (
                 <div
                   className="project-item"
-                  style={{ color: "white", border: "1px solid #333", cursor: "pointer",
-                      background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px",
+                  style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
+                      background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
                   }}
                 >{project.title}</div>
               )
