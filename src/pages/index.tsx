@@ -1,5 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+// const kofi_button_stroke = require("../images/kofi_button_stroke.png")
 
 const linkStyle = {
   color: "#8954A8",
@@ -80,7 +81,19 @@ const contactAnchorItemStyles = {
   color: "unset"
 };
 
+const projectsList = [
+  {
+    title: "Jotty",
+    description: "A note taking app in the form of a rich text editor built with React, & TypeScript.",
+  },
+  {
+    title: "Vuu-do",
+    desctription: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, and Vite for bundling",
+  },
+];
+
 const IndexPage: React.FC<PageProps> = () => {
+  // console.log('kofi_button_stroke:', kofi_button_stroke)
   return (
     <main className="main-wrapper" style={mainWrapper}>
       {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
@@ -126,9 +139,15 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <header style={gridItemContent}> */}
           <h1 style={{ marginTop: "10%", display: "flex", flexDirection: "column"}}>
             <span>Hello!</span>
-            <span>My name is <span style={{color:"chocolate"}}>Julian French</span></span>
+            <span>My name is <span style={{color:"chocolate"}}>Julian French</span>.</span>
             <span>I'm a Web Developer based in Kansas City!</span>
           </h1>
+          <h3 style={{ marginTop: "20px", fontWeight: "normal", lineHeight: "1.3"}}>
+            I'm a collaborative Front-End Developer with a background in music
+            and foreign languages. My experience spans several JavaScript technologies,
+            including TypeScript, React, Node.js, Gatsby, and more.
+            One of my goals is to always strive to have a positive outlook on life,
+            and I hope to share that positivity with any and everyone!</h3>
         {/* </header> */}
       </header>
       {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
@@ -149,20 +168,44 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* </section> */}
       </section>
       {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
-      <aside className="projects" style={{...gridItem}}>
+      <aside className="projects" style={{...gridItem, position: "relative"}}>
         {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>...</h2>
-          <div style={gridItemContentBody}>Projects here</div>
+          <h2 style={gridItemContentHeading}>Projects</h2>
+          <div style={{marginTop: "12px", border: "1px solid tomato", height: "64%"}}></div>
+          <div style={{ 
+                borderRadius: "10px",
+                position: "absolute",
+                left: "22px",
+                bottom: "22px",
+                height: "15%",
+                width: "calc(100% - 44px)",
+                background: "rgba(246,245,244,1.0)",
+                display: "flex",
+                padding: "10px"
+              }}
+          >
+            {projectsList.map((project, index) => {
+              return (
+                <div
+                  className="project-item"
+                  style={{ color: "white", border: "1px solid #333", cursor: "pointer",
+                      background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px",
+                  }}
+                >{project.title}</div>
+              )
+            })}
+          </div>
         {/* </section> */}
       </aside>
       {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
       <section className="tech" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
-          <ul style={{...gridItemContentBody, columnCount: 2, listStyleType: "none"}}>
+          <ul style={{...gridItemContentBody, columnCount: 3, listStyleType: "none"}}>
             <li>HTML</li>
             <li>CSS</li>
             <li>JavaScript</li>
+            <li>React</li>
             <li>Vue</li>
             <li>Ember</li>
             <li>Node.js</li>
@@ -176,7 +219,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>...</h2>
           <div style={gridItemContentBody}>
-            Hey!
+            <a href=""></a>
           </div>
         {/* </section> */}
       </section>
