@@ -1,5 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+import Grid from '@mui/material/Unstable_Grid2';
 // const kofi_button_stroke = require("../images/kofi_button_stroke.png")
 
 const linkStyle = {
@@ -29,7 +30,7 @@ const mainStyles = {
 }
 
 const mainWrapper: React.CSSProperties = {
-  display: "grid",
+  // display: "grid",
   width: "97%",
   position: "absolute",
   top: "50%",
@@ -47,7 +48,7 @@ const mainWrapper: React.CSSProperties = {
   // gridTemplateRows: "repeat(4, 1fr)",
   // gridTemplateRows: "repeat(4, minmax(0, 1fr))",
   // =======================================
-  gap: "1.25rem",
+  // gap: "1.25rem",
 }
 
 const gridItem = {
@@ -95,7 +96,7 @@ const projectsList = [
 const IndexPage: React.FC<PageProps> = () => {
   // console.log('kofi_button_stroke:', kofi_button_stroke)
   return (
-    <main className="main-wrapper" style={mainWrapper}>
+    <Grid container spacing={{ xs: 2 }} columns={{ xs: 4, sm: 8, md: 12 }} className="main-wrapper" style={mainWrapper}>
       {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
       <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
       <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "1 / 3"}}>Three</div>
@@ -135,6 +136,7 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* ======================================= */}
       {/* Best so far - 4 columns, 4 rows */}
       {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
+      <Grid xs={12} md={8} lg={6}>
       <header className="intro" style={{...gridItem}}>
         {/* <header style={gridItemContent}> */}
           <h1 style={{ marginTop: "10%", display: "flex", flexDirection: "column"}}>
@@ -148,14 +150,19 @@ const IndexPage: React.FC<PageProps> = () => {
             and I hope to share that positivity with any and everyone!</h3>
         {/* </header> */}
       </header>
+      </Grid>
       {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
+      <Grid xs={12} lgOffset={7}>
       <section className="theme" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
           <div style={gridItemContentBody}>Coming soon... 👀</div>
         {/* </section> */}
       </section>
-      <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
+      </Grid>
+
+      <Grid xs={12} sx={{gridColumn: "4 / 5", gridRow: "1 / 2"}}>
+      <section className="settings" style={{...gridItem, }}> {/* gridColumn: "4 / 5", gridRow: "1 / 2" */}
       {/* <section className="settings" style={{...gridItem}}> */}
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>...</h2>
@@ -165,6 +172,8 @@ const IndexPage: React.FC<PageProps> = () => {
           </ul>
         {/* </section> */}
       </section>
+      </Grid>
+      <Grid xs={12} lg={3}>
       {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
       <aside className="projects" style={{...gridItem, position: "relative"}}>
         {/* <section style={gridItemContent}> */}
@@ -195,7 +204,9 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         {/* </section> */}
       </aside>
+      </Grid>
       {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
+      <Grid xs={12}>
       <section className="tech" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
@@ -211,8 +222,10 @@ const IndexPage: React.FC<PageProps> = () => {
             <li>Gatsby</li>
           </ul>
         {/* </section> */}
-      </section >
+      </section>
+      </Grid>
       {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
+      <Grid xs={12}>
       <section className="block-6" style={{...gridItem}}>
         {/* <section style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>...</h2>
@@ -221,7 +234,9 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         {/* </section> */}
       </section>
+      </Grid>
       {/* <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}> */}
+      <Grid xs={12}>
       <footer className="contact" style={{...gridItem}}>
         {/* <footer style={gridItemContent}> */}
           <h2 style={gridItemContentHeading}>Find Me</h2>
@@ -233,7 +248,8 @@ const IndexPage: React.FC<PageProps> = () => {
           </ul>
         {/* </footer> */}
       </footer>
-    </main>
+      </Grid>
+    </Grid>
   )
 }
 
