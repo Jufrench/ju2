@@ -30,10 +30,10 @@ body {
     grid-row: 1 / 4;
   }
   
-  .theme {
+  /* .theme {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
-  }
+  } */
   
   .settings {
     grid-column: 4 / 5;
