@@ -75,19 +75,39 @@ const projectsList = [
   },
 ];
 
-const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"]
+const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"];
+
+const contacts = [
+  { name: "Github", link: "https://www.github.com/Jufrench" },
+  { name: "LinkedIn", link: "https://www.linkedin.com/in/julesfrench/" },
+  { name: "Email", link: "mailto:ju.french@gmail.com" },
+  { name: "Ko-Fi", link: "https://ko-fi.com/moijules" },
+]
 
 const pillStyles: React.CSSProperties = {
-  background: "rgba(246,245,244,0.7)",
-  // border: "1px solid rgba(246,245,244,1)",
   fontSize: "0.9rem",
-  borderRadius: "6px",
   padding: "6px 8px",
   textAlign: "center",
   margin: "3px",
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
+  border: "1px solid rgba(51,51,51,0.8)",
+  color: "rgba(51,51,51,0.8)"
+}
+
+const rectButton: React.CSSProperties = {
+  fontSize: "0.9rem",
+  padding: "6px 8px",
+  textAlign: "center",
+  margin: "3px",
+  borderRadius: "6px",
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+  cursor: "pointer",
+  background: "rgba(51, 51, 51, 0.7)",
+  color: "#fff"
 }
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -152,7 +172,7 @@ const IndexPage: React.FC<PageProps> = () => {
                     // style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
                     //     background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
                     // }}
-                    style={{...pillStyles, background: "rgba(210,105,30, 0.5)", cursor: "pointer"}}
+                    style={{...rectButton}}
                   >{project.title}</li>
                 )
               })}
@@ -166,7 +186,7 @@ const IndexPage: React.FC<PageProps> = () => {
             <ul style={{...gridItemContentBody, listStyleType: "none", paddingTop: "0"}}>
               {skills.map((skill, index) => {
                 return (
-                  <li key={index} style={{...pillStyles}}>{skill}</li>
+                  <li key={index} style={{...pillStyles, borderRadius: "20px"}}>{skill}</li>
                 )
               })}
             </ul>
@@ -183,12 +203,17 @@ const IndexPage: React.FC<PageProps> = () => {
         </section>
         {/* <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}> */}
         <section className="contact" style={{...gridItem}}>
-          <h3 style={gridItemContentHeading}>Find Me</h3>
-          <ul style={{...contactStyles, ...gridItemContentBody, columnCount: 2}}>
-            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.github.com/Jufrench">Github</a></li>
+          {/* <h3 style={gridItemContentHeading}>Find Me</h3> */}
+          <ul style={{...contactStyles, ...gridItemContentBody, columnCount: 2, paddingTop: "0"}}>
+            {/* <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.github.com/Jufrench">Github</a></li>
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.linkedin.com/in/julesfrench/">LinkedIn</a></li>
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="mailto:ju.french@gmail.com">Email</a></li>
-            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://ko-fi.com/moijules">Ko-Fi</a></li>
+            <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://ko-fi.com/moijules">Ko-Fi</a></li> */}
+            {contacts.map((contact, index) => {
+              return (
+                <li key={index}><a style={{...rectButton, textDecoration: "none"}} href={contact.link}>{contact.name}</a></li>
+              )
+            })}
           </ul>
         </section>
       </main>
