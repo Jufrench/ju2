@@ -1,5 +1,9 @@
-import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import * as React from "react"
 // const kofi_button_stroke = require("../images/kofi_button_stroke.png")
 
 const linkStyle = {
@@ -126,9 +130,20 @@ const RectActionComp = (props: RectButtonProps): JSX.Element => {
   
 }
 
+
+
 const IndexPage: React.FC<PageProps> = () => {
   // console.log('kofi_button_stroke:', kofi_button_stroke)
+  const [darkMode, setDarkMode] = React.useState(false);
+  const darkTheme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
+
   return (
+    <ThemeProvider theme={darkMode}>
+    <CssBaseline />
     <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
       <main className="main-wrapper"
         style={{...mainWrapper,  width: "80%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
@@ -235,6 +250,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </section>
       </main>
     </div>
+    </ThemeProvider>
   )
 }
 
