@@ -37,7 +37,9 @@ const gridItem = {
   // border: "1px solid #333",
   padding: "1.5rem",
   // background: "rgba(246,245,244,1.0)",
-  background: "#dddcdb",
+  // background: "#dddcdb",
+  // background: "rgba(221,220,219,.3)",
+  background: "#f2f2f1",
   borderRadius: "10px",
 };
 
@@ -53,15 +55,6 @@ const contactStyles = {
   padding: "0",
   margin: "0",
   listStyleType: "none",
-};
-
-const contactItemStyles = {
-  // marginTop: "6px",
-};
-
-const contactAnchorItemStyles = {
-  // textDecoration: "none",
-  color: "unset"
 };
 
 const projectsList = [
@@ -107,7 +100,30 @@ const rectButton: React.CSSProperties = {
   alignItems: "center",
   cursor: "pointer",
   background: "rgba(51, 51, 51, 0.7)",
-  color: "#fff"
+  color: "#fff",
+  border: "none"
+}
+
+interface RectButtonProps {
+  text: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  isLink?: boolean;
+  href?: string;
+}
+
+// TODO:
+// figure out why contact buttons are smaller than project buttons
+const RectActionComp = (props: RectButtonProps): JSX.Element => {
+  return (
+    <>
+      {props.isLink ? 
+        <li style={rectButton}><a style={{ color: "#fff", textDecoration: "none"}} href={props.href}>{props.text}</a></li> :
+        <button style={rectButton}>{props.text}</button>
+      }
+    </>
+  )
+  
 }
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -166,14 +182,13 @@ const IndexPage: React.FC<PageProps> = () => {
             >
               {projectsList.map((project, index) => {
                 return (
-                  <li
+                  <RectActionComp
                     key={index}
-                    className="project-item"
                     // style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
                     //     background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
                     // }}
-                    style={{...rectButton}}
-                  >{project.title}</li>
+                    text={project.title}
+                  ></RectActionComp>
                 )
               })}
             </ul>
@@ -211,7 +226,9 @@ const IndexPage: React.FC<PageProps> = () => {
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://ko-fi.com/moijules">Ko-Fi</a></li> */}
             {contacts.map((contact, index) => {
               return (
-                <li key={index}><a style={{...rectButton, textDecoration: "none"}} href={contact.link}>{contact.name}</a></li>
+                // <li key={index}><a style={{...rectButton, textDecoration: "none"}} href={contact.link}>{contact.name}</a></li>
+                // <li key={index}><a style={{...rectButton, textDecoration: "none"}} href={contact.link}>{contact.name}</a></li>
+                <RectActionComp key={index} text={contact.name} isLink={true} href={contact.link}></RectActionComp>
               )
             })}
           </ul>
