@@ -17,37 +17,20 @@ const docLinkStyle = {
   marginRight: 12,
 }
 
-const mainStyles = {
-  // background: "royalblue",
-  // position: "absolute" as Position,
-  // position: "absolute" as any,
-  // height: "97%",
+const mainWrapper: React.CSSProperties = {
+  display: "grid",
   // width: "97%",
+  // position: "absolute",
   // top: "50%",
   // left: "50%",
   // transform: "translate(-50%, -50%)",
-}
-
-const mainWrapper: React.CSSProperties = {
-  display: "grid",
-  width: "97%",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  // =======================================
-  height: "95vh",
-  // gridTemplateColumns: "repeat(6, 1fr)",
-  // gridTemplateRows: "repeat(5, 1fr)",
-  // =======================================
-  // gridTemplateColumns: "repeat(5, 1fr)",
-  // gridTemplateRows: "repeat(4, 1fr)",
-  // =======================================
-  // gridTemplateColumns: "repeat(4, 1fr)",
-  // gridTemplateRows: "repeat(4, 1fr)",
-  // gridTemplateRows: "repeat(4, minmax(0, 1fr))",
   // =======================================
   gap: "1.25rem",
+  // new grid style
+  width: "80%",
+  // marginLeft: "auto",
+  // marginRight: "auto",
+  height: "90vh",
 }
 
 const gridItem = {
@@ -92,51 +75,30 @@ const projectsList = [
   },
 ];
 
+const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"]
+
+const pillStyles: React.CSSProperties = {
+  background: "rgba(246,245,244,0.7)",
+  // border: "1px solid rgba(246,245,244,1)",
+  fontSize: "0.9rem",
+  borderRadius: "6px",
+  padding: "6px 8px",
+  textAlign: "center",
+  margin: "3px",
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+}
+
 const IndexPage: React.FC<PageProps> = () => {
   // console.log('kofi_button_stroke:', kofi_button_stroke)
   return (
-    <main className="main-wrapper" style={mainWrapper}>
-      {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
-      <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
-      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "1 / 3"}}>Three</div>
-      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-      <div className="gradient" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}>Five</div>
-      <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 5"}}>six</div>
-      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "3 / 6"}}>seven</div>
-      <div style={{...gridItem, gridColumn: "3 / 5"}}>eight</div> */}
-      {/* ======================================= */}
-      {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
-      <div style={{...gridItem, gridColumn: "4 / 5"}}>Two</div>
-      <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 3"}}>Three</div>
-      <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 3"}}>Three.1</div>
-      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-      <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "2 / 4"}}>six</div>
-      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>seven</div>
-      <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "5 / 6"}}>eight</div> */}
-      {/* ======================================= */}
-      {/* I like this one - 6 columns, 5 rows */}
-      {/* <div style={{...gridItem, ...aboutMe2}}>One</div>
-      <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "1 / 4"}}>Two</div>
-      <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "1 / 2"}}>Three</div>
-      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-      <div style={{...gridItem, gridColumn: "6 / 7", gridRow: "2 / 4"}}>six</div>
-      <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
-      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "4 / 5"}}>eight top</div>
-      <div style={{...gridItem, gridColumn: "5 / 7", gridRow: "5 / 6"}}>eight bottom</div> */}
-      {/* ======================================= */}
-      {/* I like this one - 5 columns, 4 rows */}
-      {/* <div style={{...gridItem, gridColumn: "1 / 4", gridRow: "1 / 4"}}>One</div>
-      <div style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>Two</div>
-      <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "1 / 2"}}>Three</div>
-      <div style={{...gridItem, gridColumn: "4 / 6", gridRow: "2 / 4"}}>three</div>
-      <div style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 6"}}>four</div>
-      <div style={{...gridItem, gridColumn: "3 / 5", gridRow: "4 / 6"}}>seven</div>
-      <div style={{...gridItem, gridColumn: "5 / 6", gridRow: "4 / 6"}}>eight</div> */}
-      {/* ======================================= */}
-      {/* Best so far - 4 columns, 4 rows */}
-      {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
-      <header className="intro" style={{...gridItem}}>
-        {/* <header style={gridItemContent}> */}
+    <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
+      <main className="main-wrapper"
+        style={{...mainWrapper,  width: "80%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
+        {/* Best so far - 4 columns, 4 rows */}
+        {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
+        <section className="intro" style={{...gridItem}}>
           <h1 style={{ marginTop: "10%", display: "flex", flexDirection: "column"}}>
             <span>Hello!</span>
             <span>My name is <span style={{color:"chocolate"}}>Julian French</span>.</span>
@@ -146,94 +108,91 @@ const IndexPage: React.FC<PageProps> = () => {
             I'm a collaborative Front-End Developer with a background in music
             and foreign languages. One of my goals is to always strive to have a positive outlook on life,
             and I hope to share that positivity with any and everyone!</h3>
-        {/* </header> */}
-      </header>
-      {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
-      <section className="theme" style={{...gridItem}}>
-        {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>VSCode Custom Theme</h2>
-          <div style={gridItemContentBody}>Coming soon... 👀</div>
-        {/* </section> */}
-      </section>
-      <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
-      {/* <section className="settings" style={{...gridItem}}> */}
-        {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>...</h2>
-          <ul style={{...gridItemContentBody, columnCount: 2}}>
-            <button style={{ padding: "10px"}}>I don't do anything yet</button>
-            <button style={{ padding: "10px"}}>Me neither</button>
-          </ul>
-        {/* </section> */}
-      </section>
-      {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
-      <aside className="projects" style={{...gridItem, position: "relative"}}>
-        {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>Projects</h2>
-          <div style={{marginTop: "12px", border: "1px solid tomato", height: "64%"}}></div>
-          <div style={{ 
-                borderRadius: "10px",
-                position: "absolute",
-                left: "22px",
-                bottom: "22px",
-                height: "15%",
-                width: "calc(100% - 44px)",
-                background: "rgba(246,245,244,0.7)",
-                display: "flex",
-                padding: "10px"
-              }}
-          >
-            {projectsList.map((project, index) => {
-              return (
-                <div
-                  className="project-item"
-                  style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
-                      background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
-                  }}
-                >{project.title}</div>
-              )
-            })}
-          </div>
-        {/* </section> */}
-      </aside>
-      {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
-      <section className="tech" style={{...gridItem}}>
-        {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>Technologies I use/I've used</h2>
-          <ul style={{...gridItemContentBody, columnCount: 3, listStyleType: "none"}}>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Vue</li>
-            <li>Ember</li>
-            <li>Node.js</li>
-            <li>Webpack</li>
-            <li>Gatsby</li>
-          </ul>
-        {/* </section> */}
-      </section >
-      {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
-      <section className="block-6" style={{...gridItem}}>
-        {/* <section style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>...</h2>
-          <div style={gridItemContentBody}>
-            <a href=""></a>
-          </div>
-        {/* </section> */}
-      </section>
-      {/* <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}> */}
-      <footer className="contact" style={{...gridItem}}>
-        {/* <footer style={gridItemContent}> */}
-          <h2 style={gridItemContentHeading}>Find Me</h2>
+        </section>
+        {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
+        <section className="theme" style={{...gridItem, gridColumn: "3/4", gridRow: "1/2"}}>
+          {/* <section style={gridItemContent}> */}
+            <h3 style={gridItemContentHeading}>VSCode Custom Theme</h3>
+            <div style={gridItemContentBody}>Coming soon... 👀</div>
+          {/* </section> */}
+        </section>
+        <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
+        {/* <section className="settings" style={{...gridItem}}> */}
+          {/* <section style={gridItemContent}> */}
+            <h3 style={gridItemContentHeading}>...</h3>
+            <ul style={{...gridItemContentBody, columnCount: 2}}>
+              <button style={{ padding: "10px"}}>I don't do anything yet</button>
+              <button style={{ padding: "10px"}}>Me neither</button>
+            </ul>
+          {/* </section> */}
+        </section>
+        {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
+        <aside className="projects" style={{...gridItem, position: "relative"}}>
+          {/* <section style={gridItemContent}> */}
+            <h3 style={gridItemContentHeading}>Projects</h3>
+            <div style={{marginTop: "12px", border: "1px solid tomato", height: "64%"}}></div>
+            <ul style={{ 
+                  borderRadius: "10px",
+                  position: "absolute",
+                  left: "22px",
+                  bottom: "22px",
+                  // height: "17%",
+                  height: "55px",
+                  width: "calc(100% - 44px)",
+                  background: "rgba(246,245,244,0.7)",
+                  display: "flex",
+                  padding: "10px"
+                }}
+            >
+              {projectsList.map((project, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="project-item"
+                    // style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
+                    //     background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
+                    // }}
+                    style={{...pillStyles, background: "rgba(210,105,30, 0.5)", cursor: "pointer"}}
+                  >{project.title}</li>
+                )
+              })}
+            </ul>
+          {/* </section> */}
+        </aside>
+        {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
+        <section className="tech" style={{...gridItem, display: "flex"}}>
+          {/* <section style={gridItemContent}> */}
+            <h3 style={{...gridItemContentHeading, marginTop: "8px"}}>Tech</h3>
+            <ul style={{...gridItemContentBody, listStyleType: "none", paddingTop: "0"}}>
+              {skills.map((skill, index) => {
+                return (
+                  <li key={index} style={{...pillStyles}}>{skill}</li>
+                )
+              })}
+            </ul>
+          {/* </section> */}
+        </section >
+        {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
+        <section className="block-6" style={{...gridItem}}>
+          {/* <section style={gridItemContent}> */}
+            <h3 style={gridItemContentHeading}></h3>
+            <div style={gridItemContentBody}>
+              <a href=""></a>
+            </div>
+          {/* </section> */}
+        </section>
+        {/* <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}> */}
+        <section className="contact" style={{...gridItem}}>
+          <h3 style={gridItemContentHeading}>Find Me</h3>
           <ul style={{...contactStyles, ...gridItemContentBody, columnCount: 2}}>
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.github.com/Jufrench">Github</a></li>
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://www.linkedin.com/in/julesfrench/">LinkedIn</a></li>
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="mailto:ju.french@gmail.com">Email</a></li>
             <li style={contactItemStyles}><a style={contactAnchorItemStyles} href="https://ko-fi.com/moijules">Ko-Fi</a></li>
           </ul>
-        {/* </footer> */}
-      </footer>
-    </main>
+        </section>
+      </main>
+    </div>
   )
 }
 
