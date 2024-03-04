@@ -162,15 +162,21 @@ const DynamicRectangle = (props: DynamicRectangleProps): JSX.Element => {
 const IndexPage: React.FC<PageProps> = () => {
   // console.log('kofi_button_stroke:', kofi_button_stroke)
   const [darkMode, setDarkMode] = React.useState(false);
-  const darkTheme = createTheme({
+  const testTheme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      primary: {
+        main: '#90caf9',
+      },
+      secondary: {
+        main: '#f48fb1',
+      },
     },
   });
 
 
   return (
-    <ThemeProvider theme={darkMode}>
+    <ThemeProvider theme={testTheme}>
     <CssBaseline />
     <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
       <main className="main-wrapper"
@@ -198,10 +204,10 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
         {/* <section className="settings" style={{...gridItem}}> */}
           {/* <section style={gridItemContent}> */}
-            <h3 style={gridItemContentHeading}>...</h3>
+            <h3 style={gridItemContentHeading}> {darkMode ? 'dark mode' : 'light mode'}</h3>
             <ul style={{...gridItemContentBody, columnCount: 2}}>
               <button style={{ padding: "10px"}}>I don't do anything yet</button>
-              <button style={{ padding: "10px"}}>Me neither</button>
+              <button onClick={() => setDarkMode(prevState => !prevState)} style={{ padding: "10px"}}>Toggle Dark Mode</button>
             </ul>
           {/* </section> */}
         </section>
