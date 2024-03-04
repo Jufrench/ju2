@@ -95,7 +95,7 @@ const pillStyles: React.CSSProperties = {
 
 const rectButton: React.CSSProperties = {
   fontSize: "0.9rem",
-  padding: "6px 8px",
+  padding: "20px 16px",
   textAlign: "center",
   margin: "3px",
   borderRadius: "6px",
@@ -103,13 +103,24 @@ const rectButton: React.CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
   cursor: "pointer",
-  background: "rgba(51, 51, 51, 0.7)",
-  color: "#fff",
+  // background: "rgba(51, 51, 51, 0.7)",
+  // color: "#fff",
   border: "none"
 }
 
 interface RectButtonProps {
   text: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  isLink?: boolean;
+  href?: string;
+}
+
+interface DynamicRectangleProps {
+  text: string;
+  padding?: string;
+  color?: string;
+  background?: string;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   isLink?: boolean;
@@ -130,7 +141,23 @@ const RectActionComp = (props: RectButtonProps): JSX.Element => {
   
 }
 
+const DynamicRectangle = (props: DynamicRectangleProps): JSX.Element => {
+  const background = props.background ? props.background : `rgba(${props.color}, 0.2)`;
+  const color = props.color ? `rgba(${props.color}, 2)` : "unset";
 
+  return (
+    <>
+      {props.isLink ? 
+        <li style={rectButton}><a style={{ color: "#fff", textDecoration: "none"}} href={props.href}>{props.text}</a></li> :
+        <button style={{...rectButton, background: background, 
+          fontWeight: "bold",
+          color: color,
+          border: `1px solid rgba(${props.color}, 0.3)`,
+        }}>{props.text}</button>
+      }
+    </>
+  )
+}
 
 const IndexPage: React.FC<PageProps> = () => {
   // console.log('kofi_button_stroke:', kofi_button_stroke)
@@ -140,6 +167,7 @@ const IndexPage: React.FC<PageProps> = () => {
       mode: darkMode ? 'dark' : 'light',
     },
   });
+
 
   return (
     <ThemeProvider theme={darkMode}>
@@ -188,22 +216,27 @@ const IndexPage: React.FC<PageProps> = () => {
                   left: "22px",
                   bottom: "22px",
                   // height: "17%",
-                  height: "55px",
+                  height: "60px",
                   width: "calc(100% - 44px)",
-                  background: "rgba(246,245,244,0.7)",
+                  // background: "rgba(246,245,244,)",
+                  background: "#fff",
                   display: "flex",
-                  padding: "10px"
+                  padding: "2px",
+                  border: "1px solid rgba(51, 51, 51, 0.1)",
+                  boxShadow: "0 0 5px 0 rgba(0,0,0,0.2)",
                 }}
             >
               {projectsList.map((project, index) => {
                 return (
-                  <RectActionComp
+                  <DynamicRectangle
                     key={index}
                     // style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
                     //     background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
                     // }}
                     text={project.title}
-                  ></RectActionComp>
+                    // background="rgba(242, 176, 61, .7)"
+                    color="34, 159, 153"
+                  ></DynamicRectangle>
                 )
               })}
             </ul>
