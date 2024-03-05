@@ -55,7 +55,9 @@ const gridItem = {
   borderRadius: "10px",
 
   // white/blue color
-  background: "rgb(250, 251, 252)",
+  // background: "rgb(250, 251, 252)",
+  // background: "#fafbfc",
+  background: "rgba(234,238,242, 0.5)",
   border: "1px solid rgba(211,213,215,0.9)",
 };
 
