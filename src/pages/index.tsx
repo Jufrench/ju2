@@ -17,6 +17,19 @@ const docLinkStyle = {
   marginRight: 12,
 }
 
+const projectsList = [
+  {
+    title: "Jotty",
+    description: "A note taking app in the form of a rich text editor built with React, & TypeScript.",
+  },
+  {
+    title: "Vuu-do",
+    desctription: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, and Vite for bundling",
+  },
+];
+
+const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"];
+
 const mainWrapper: React.CSSProperties = {
   display: "grid",
   // width: "97%",
@@ -27,7 +40,6 @@ const mainWrapper: React.CSSProperties = {
   // =======================================
   gap: "1.25rem",
   // new grid style
-  width: "80%",
   // marginLeft: "auto",
   // marginRight: "auto",
   height: "90vh",
@@ -39,8 +51,12 @@ const gridItem = {
   // background: "rgba(246,245,244,1.0)",
   // background: "#dddcdb",
   // background: "rgba(221,220,219,.3)",
-  background: "#f2f2f1",
+  // background: "#f2f2f1",
   borderRadius: "10px",
+
+  // white/blue color
+  background: "rgb(250, 251, 252)",
+  border: "1px solid rgba(211,213,215,0.9)",
 };
 
 const gridItemContentHeading = {
@@ -56,19 +72,6 @@ const contactStyles = {
   margin: "0",
   listStyleType: "none",
 };
-
-const projectsList = [
-  {
-    title: "Jotty",
-    description: "A note taking app in the form of a rich text editor built with React, & TypeScript.",
-  },
-  {
-    title: "Vuu-do",
-    desctription: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, and Vite for bundling",
-  },
-];
-
-const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"];
 
 const contacts = [
   { name: "Github", link: "https://www.github.com/Jufrench" },
@@ -112,14 +115,13 @@ interface RectButtonProps {
   href?: string;
 }
 
-interface DynamicRectangleProps {
+interface StyledRectangleProps {
   text: string;
   padding?: string;
   color?: string;
   background?: string;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-  isLink?: boolean;
   href?: string;
 }
 
@@ -136,30 +138,29 @@ const RectActionComp = (props: RectButtonProps): JSX.Element => {
   )
 }
 
-const DynamicRectangle = (props: DynamicRectangleProps): JSX.Element => {
+const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
   const background = props.background ? props.background : `rgba(${props.color}, 0.2)`;
   const color = props.color ? `rgba(${props.color}, 2)` : "unset";
 
   return (
-    <>
-      {props.isLink ? 
-        <li style={rectButton}><a style={{ color: "#fff", textDecoration: "none"}} href={props.href}>{props.text}</a></li> :
-        <button style={{...rectButton, background: background, 
-          fontWeight: "bold",
-          color: color,
-          border: `1px solid rgba(${props.color}, 0.3)`,
-        }}>{props.text}</button>
-      }
-    </>
+    <button style={{...rectButton, background: background, 
+      fontWeight: "bold",
+      color: color,
+      border: `1px solid rgba(${props.color}, 0.3)`,
+      height: "40px",
+      padding: "5px 16px",
+    }}>{props.text}</button>
   )
 }
+
+
 
 const IndexPage: React.FC<PageProps> = () => {
 
   return (
     <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
       <main className="main-wrapper"
-        style={{...mainWrapper,  width: "80%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
+        style={{...mainWrapper,  width: "70%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
         {/* Best so far - 4 columns, 4 rows */}
         {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
         <section className="intro" style={{...gridItem}}>
@@ -180,21 +181,26 @@ const IndexPage: React.FC<PageProps> = () => {
             <div style={gridItemContentBody}>Coming soon... 👀</div>
           {/* </section> */}
         </section>
-        <section className="settings" style={{...gridItem, gridColumn: "4 / 5", gridRow: "1 / 2"}}>
+        <section
+          className="settings"
+          style={{...gridItem,
+            border: "1px solid rgba(211,213,215,0.2)",
+            gridColumn: "4 / 5", gridRow: "1 / 2"}}>
         {/* <section className="settings" style={{...gridItem}}> */}
           {/* <section style={gridItemContent}> */}
-            <h3 style={gridItemContentHeading}>...</h3>
-            <ul style={{...gridItemContentBody, columnCount: 2}}>
-              <button style={{ padding: "10px"}}>I don't do anything yet</button>
-              <button style={{ padding: "10px"}}>Me neither</button>
-            </ul>
+            {/* <h3 style={gridItemContentHeading}>...</h3> */}
+            {/* <ul style={{...gridItemContentBody, columnCount: 2}}> */}
+              {/* <button style={{ padding: "10px"}}>I don't do anything yet</button> */}
+              {/* <button style={{ padding: "10px"}}>Me neither</button> */}
+            {/* </ul> */}
           {/* </section> */}
         </section>
         {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
         <aside className="projects" style={{...gridItem, position: "relative"}}>
           {/* <section style={gridItemContent}> */}
             <h3 style={gridItemContentHeading}>Projects</h3>
-            <div style={{marginTop: "12px", border: "1px solid tomato", height: "64%"}}></div>
+            <div style={{marginTop: "12px", borderRadius: "10px",
+              border: "1px solid rgba(211,213,215,1)", height: "64%"}}></div>
             <ul style={{ 
                   borderRadius: "10px",
                   position: "absolute",
@@ -204,24 +210,24 @@ const IndexPage: React.FC<PageProps> = () => {
                   height: "60px",
                   width: "calc(100% - 44px)",
                   // background: "rgba(246,245,244,)",
-                  background: "#fff",
+                  // background: "#fff",
                   display: "flex",
+                  alignItems: "center",
                   padding: "2px",
-                  border: "1px solid rgba(51, 51, 51, 0.1)",
-                  boxShadow: "0 0 5px 0 rgba(0,0,0,0.2)",
-                }}
-            >
+                  border: "1px solid rgba(211,213,215,1)"
+                  // boxShadow: "0 0 5px 0 rgba(0,0,0,0.2)",
+                }}>
               {projectsList.map((project, index) => {
                 return (
-                  <DynamicRectangle
+                  <StyledRectangle
                     key={index}
                     // style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
                     //     background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
                     // }}
                     text={project.title}
                     // background="rgba(242, 176, 61, .7)"
-                    color="34, 159, 153"
-                  ></DynamicRectangle>
+                    color="51, 51, 51"
+                  ></StyledRectangle>
                 )
               })}
             </ul>
@@ -230,7 +236,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
         <section className="tech" style={{...gridItem, display: "flex"}}>
           {/* <section style={gridItemContent}> */}
-            <h3 style={{...gridItemContentHeading, marginTop: "8px"}}>Tech</h3>
+            {/* <h3 style={{...gridItemContentHeading, marginTop: "8px"}}>Tech</h3> */}
             <ul style={{...gridItemContentBody, listStyleType: "none", paddingTop: "0"}}>
               {skills.map((skill, index) => {
                 return (
@@ -241,7 +247,7 @@ const IndexPage: React.FC<PageProps> = () => {
           {/* </section> */}
         </section >
         {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
-        <section className="block-6" style={{...gridItem}}>
+        <section className="block-6" style={{...gridItem, background: "#fff", border: "1px solid rgba(211,213,215,0.2)"}}>
           {/* <section style={gridItemContent}> */}
             <h3 style={gridItemContentHeading}></h3>
             <div style={gridItemContentBody}>
