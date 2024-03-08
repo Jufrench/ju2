@@ -6,21 +6,6 @@ import email from "../images/email.svg";
 import kofi from "../images/ko-fi.svg";
 import React from "react";
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
-
 const projectsList = [
   {
     title: "Jotty",
@@ -33,6 +18,7 @@ const projectsList = [
 ];
 
 const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"];
+
 const contactIcons = [
   {
     name: "Github",
@@ -117,16 +103,16 @@ interface StyledRectangleProps {
   href?: string;
 }
 
-const RectActionComp = (props: RectButtonProps): JSX.Element => {
-  return (
-    <>
-      {props.isLink ? 
-        <li style={rectButton}><a style={{ color: "#fff", textDecoration: "none"}} href={props.href}>{props.text}</a></li> :
-        <button style={rectButton}>{props.text}</button>
-      }
-    </>
-  )
-}
+// const RectActionComp = (props: RectButtonProps): JSX.Element => {
+//   return (
+//     <>
+//       {props.isLink ? 
+//         <li style={rectButton}><a style={{ color: "#fff", textDecoration: "none"}} href={props.href}>{props.text}</a></li> :
+//         <button style={rectButton}>{props.text}</button>
+//       }
+//     </>
+//   )
+// }
 
 const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
   const background = props.background ? props.background : `rgba(${props.color}, 0.2)`;
@@ -165,12 +151,6 @@ const useQuery = (query: string) => {
   return matches;
 }
 
-const Menu= () => {
-  const isMobile = useQuery("(min-width: 768px)");
-}
-
-
-
 const IndexPage: React.FC<PageProps> = () => {
   // mobile - do nothing
   // tablet - min width 768
@@ -191,7 +171,13 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
       <main className="main-wrapper"
-        style={{...mainWrappeDesktopr,  width: "70%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
+        style={{
+          width: "70%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+          ...mainWrappeDesktopr
+        }}
+      >
+        {/* INTRODUCTION 
+        ==================== */}
         <section className="intro" style={{...gridItem}}>
           <h1 style={{ marginTop: "10%", display: "flex", flexDirection: "column"}}>
             <span>Hello!</span>
@@ -203,16 +189,19 @@ const IndexPage: React.FC<PageProps> = () => {
             and foreign languages. One of my goals is to always strive to have a positive outlook on life,
             and I hope to share that positivity with any and everyone!</h3>
         </section>
-        <section className="theme" style={{...gridItem, gridColumn: "3/4", gridRow: "1/2"}}>
+
+        <section className="theme" style={{...gridItem}}>
             <h3>VSCode Theme</h3>
             <div style={gridItemContentBody}>Coming soon...</div>
         </section>
+
         <section
           className="settings"
           style={{...gridItem,
             border: "1px solid rgba(211,213,215,0.2)",
-            gridColumn: "4 / 5", gridRow: "1 / 2", background: "rgba(234, 238, 242, 0.2)"}}>
+            background: "rgba(234, 238, 242, 0.2)"}}>
         </section>
+
         <aside className="projects" style={{...gridItem, position: "relative"}}>
             <h3>Projects</h3>
             <div style={{marginTop: "12px", borderRadius: "10px",
@@ -239,6 +228,7 @@ const IndexPage: React.FC<PageProps> = () => {
               })}
             </ul>
         </aside>
+
         <section className="tech" style={{...gridItem, display: "flex"}}>
             <ul style={{...gridItemContentBody, listStyleType: "none", paddingTop: "0"}}>
               {skills.map((skill, index) => {
@@ -247,11 +237,13 @@ const IndexPage: React.FC<PageProps> = () => {
                 )
               })}
             </ul>
-        </section >
+        </section>
+
         <section className="block-6" style={{...gridItem, background: "rgba(234, 238, 242, 0.2)", border: "1px solid rgba(211,213,215,0.2)"}}>
             <h3></h3>
             <div style={gridItemContentBody}></div>
         </section>
+
         <section
           className="contact"
           style={{...gridItem, display: "flex", alignItems: "center", 
