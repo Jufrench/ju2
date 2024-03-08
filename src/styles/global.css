@@ -8,10 +8,16 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+.content-wrapper {
+  padding: 1rem 0;
+}
+
 .main-wrapper {
   /* border: 1px solid red; */
   grid: 1fr !important;
   /* grid-template-rows: "repeat(4, 1fr)"; */
+  width: 80%;
+  margin: 0 auto;
 }
 
 .intro {
@@ -41,11 +47,19 @@ h1, h2, h3, h4, h5, h6 {
 .contact {}
 
 @media screen and (min-width: 768px) {
+  .content-wrapper {
+    height: "100vh";
+    border: "2px solid red";
+  }
   .main-wrapper {
     border: 2px solid dodgerblue;
-    /* grid-template-columns: repeat(4, 1fr); */
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, minmax(0, 1fr));
+    height: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   
   .intro {

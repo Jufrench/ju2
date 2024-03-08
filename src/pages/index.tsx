@@ -53,7 +53,6 @@ const gridItem = {
   borderRadius: "10px",
   background: "rgba(234,238,242, 0.5)",
   border: "1px solid rgba(211,213,215,0.9)",
-  overflow: "scroll",
 };
 
 const gridItemContentBody = {
@@ -169,12 +168,9 @@ const IndexPage: React.FC<PageProps> = () => {
   console.groupEnd()
 
   return (
-    <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
+    <div className="content-wrapper">
       <main className="main-wrapper"
-        style={{
-          width: "70%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          ...mainWrappeDesktopr
-        }}
+        style={mainWrappeDesktopr}
       >
         {/* INTRODUCTION 
         ==================== */}
