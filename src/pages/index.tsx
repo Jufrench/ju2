@@ -17,7 +17,7 @@ const projectsList = [
   },
 ];
 
-const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Webpack","Gatsby"];
+const skills: string[] = ["HTML","CSS","JavaScript","React","Vue","Ember","Node.js","Gatsby", "Next.js"];
 
 const contactIcons = [
   {

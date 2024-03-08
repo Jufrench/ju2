@@ -14,36 +14,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-wrapper {
   /* border: 1px solid red; */
-  grid: 1fr !important;
-  /* grid-template-rows: "repeat(4, 1fr)"; */
+  grid: 1fr;
   width: 80%;
   margin: 0 auto;
 }
 
-.intro {
-  /* border: 2px solid red !important; */
-  /* grid-column: "1/2"; */
-  /* grid-row: "1/2"; */
-}
-
-.theme {
-  /* grid-row: "1/2"; */
-}
-
-.settings {
-  /* gridColumn: "4 / 5", gridRow: "1 / 2", */
-}
-
-.projects {
-
-}
-
-.tech {
-
-}
-
+.intro {}
+.theme {}
+.settings {}
+.projects {}
+.tech {}
 .block-6 {}
-
 .contact {}
 
 @media screen and (min-width: 768px) {
