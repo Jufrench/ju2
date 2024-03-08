@@ -89,6 +89,7 @@ const gridItem = {
   // background: "#fafbfc",
   background: "rgba(234,238,242, 0.5)",
   border: "1px solid rgba(211,213,215,0.9)",
+  overflow: "scroll",
 };
 
 const gridItemContentHeading = {
