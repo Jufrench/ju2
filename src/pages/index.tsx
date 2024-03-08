@@ -1,9 +1,10 @@
-import * as React from "react"
+import { useState, useEffect } from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import githubMark from "../images/github-mark.svg";
 import linkedin from "../images/linkedin.svg";
 import email from "../images/email.svg";
 import kofi from "../images/ko-fi.svg";
+import React from "react";
 
 const linkStyle = {
   color: "#8954A8",
@@ -55,40 +56,18 @@ const contactIcons = [
   }
 ]
 
-const mainWrapper: React.CSSProperties = {
+const mainWrappeDesktopr: React.CSSProperties = {
   display: "grid",
-  // width: "97%",
-  // position: "absolute",
-  // top: "50%",
-  // left: "50%",
-  // transform: "translate(-50%, -50%)",
-  // =======================================
   gap: "1.25rem",
-  // new grid style
-  // marginLeft: "auto",
-  // marginRight: "auto",
   height: "90vh",
 }
 
 const gridItem = {
-  // border: "1px solid #333",
   padding: "1.5rem",
-  // background: "rgba(246,245,244,1.0)",
-  // background: "#dddcdb",
-  // background: "rgba(221,220,219,.3)",
-  // background: "#f2f2f1",
   borderRadius: "10px",
-
-  // white/blue color
-  // background: "rgb(250, 251, 252)",
-  // background: "#fafbfc",
   background: "rgba(234,238,242, 0.5)",
   border: "1px solid rgba(211,213,215,0.9)",
   overflow: "scroll",
-};
-
-const gridItemContentHeading = {
-  // margin: "0" ,
 };
 
 const gridItemContentBody = {
@@ -165,14 +144,64 @@ const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
   )
 }
 
+const tabletStyles = {};
+const desktopStyles = {};
+const largeDesktopStyles = {};
+
+const useQuery = (query: string) => {
+  const [matches, setMatches] = useState(false)
+  const handleChange = (e: any) => setMatches(e.matches)
+
+  useEffect(() => {
+    const m = window.matchMedia(query);
+    setMatches(m.matches)
+    m.addEventListener('change', handleChange);
+
+    return () => {
+      m.removeEventListener('change', handleChange);
+    }
+  }, []);
+
+  return matches;
+}
+
+const Menu= () => {
+  const isMobile = useQuery("(min-width: 768px)");
+}
+
+
+
 const IndexPage: React.FC<PageProps> = () => {
+  // mobile - do nothing
+  // tablet - min width 768
+  // desktop - min width 1024
+  // large desktop - min width 1440
+  const isMobile = useQuery("(max-width: 767px)");
+  const isTablet = useQuery("(min-width: 768px)");
+  const isDesktop = useQuery("(min-width: 1024px)");
+  const isLargeDesktop = useQuery("(min-width: 1440px)");
+
+  console.group('%csizing', 'color:tomato');
+  console.log('Is Mobile', isMobile);
+  console.log('Is Tablet', isTablet);
+  console.log('Is Desktop', isDesktop);
+  console.log('Is largetDesktop', isLargeDesktop);
+  console.groupEnd()
+
+  // React.useEffect(() => {
+  //   // console.log('%cmatches media', 'color:tomato', window.matchMedia("(min-width: 768px)"));
+  //   // window.matchMedia("(min-width: 768px)").addEventListener("resize", (e: any) => {
+  //   window.matchMedia("(min-width: 768px)").addEventListener("resize", (e: any) => {
+  //     // setIsTablet(e.matches);
+  //     console.log('hey!!!')
+  //   });
+  // }, [])
+
 
   return (
     <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
       <main className="main-wrapper"
-        style={{...mainWrapper,  width: "70%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
-        {/* Best so far - 4 columns, 4 rows */}
-        {/* <header className="intro" style={{...gridItem, gridColumn: "1 / 3", gridRow: "1 / 4"}}> */}
+        style={{...mainWrappeDesktopr,  width: "70%", height: "85%", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
         <section className="intro" style={{...gridItem}}>
           <h1 style={{ marginTop: "10%", display: "flex", flexDirection: "column"}}>
             <span>Hello!</span>
@@ -187,7 +216,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
         <section className="theme" style={{...gridItem, gridColumn: "3/4", gridRow: "1/2"}}>
           {/* <section style={gridItemContent}> */}
-            <h3 style={gridItemContentHeading}>VSCode Theme</h3>
+            <h3>VSCode Theme</h3>
             <div style={gridItemContentBody}>Coming soon...</div>
           {/* </section> */}
         </section>
@@ -208,7 +237,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
         <aside className="projects" style={{...gridItem, position: "relative"}}>
           {/* <section style={gridItemContent}> */}
-            <h3 style={gridItemContentHeading}>Projects</h3>
+            <h3>Projects</h3>
             <div style={{marginTop: "12px", borderRadius: "10px",
               border: "1px solid rgba(211,213,215,1)", height: "64%"}}></div>
             <ul style={{ 
@@ -259,7 +288,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
         <section className="block-6" style={{...gridItem, background: "rgba(234, 238, 242, 0.2)", border: "1px solid rgba(211,213,215,0.2)"}}>
           {/* <section style={gridItemContent}> */}
-            <h3 style={gridItemContentHeading}></h3>
+            <h3></h3>
             <div style={gridItemContentBody}></div>
           {/* </section> */}
         </section>
