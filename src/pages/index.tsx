@@ -150,7 +150,7 @@ const largeDesktopStyles = {};
 
 const useQuery = (query: string) => {
   const [matches, setMatches] = useState(false)
-  const handleChange = (e: any) => setMatches(e.matches)
+  const handleChange = (e: MediaQueryListEvent) => setMatches(e.matches)
 
   useEffect(() => {
     const m = window.matchMedia(query);
@@ -188,16 +188,6 @@ const IndexPage: React.FC<PageProps> = () => {
   console.log('Is largetDesktop', isLargeDesktop);
   console.groupEnd()
 
-  // React.useEffect(() => {
-  //   // console.log('%cmatches media', 'color:tomato', window.matchMedia("(min-width: 768px)"));
-  //   // window.matchMedia("(min-width: 768px)").addEventListener("resize", (e: any) => {
-  //   window.matchMedia("(min-width: 768px)").addEventListener("resize", (e: any) => {
-  //     // setIsTablet(e.matches);
-  //     console.log('hey!!!')
-  //   });
-  // }, [])
-
-
   return (
     <div className="content-wrapper" style={{height: "100vh", border: "2px solid red"}}>
       <main className="main-wrapper"
@@ -213,30 +203,17 @@ const IndexPage: React.FC<PageProps> = () => {
             and foreign languages. One of my goals is to always strive to have a positive outlook on life,
             and I hope to share that positivity with any and everyone!</h3>
         </section>
-        {/* <section className="theme" style={{...gridItem, gridColumn: "3 / 4", gridRow: "1 / 2"}}> */}
         <section className="theme" style={{...gridItem, gridColumn: "3/4", gridRow: "1/2"}}>
-          {/* <section style={gridItemContent}> */}
             <h3>VSCode Theme</h3>
             <div style={gridItemContentBody}>Coming soon...</div>
-          {/* </section> */}
         </section>
         <section
           className="settings"
           style={{...gridItem,
             border: "1px solid rgba(211,213,215,0.2)",
             gridColumn: "4 / 5", gridRow: "1 / 2", background: "rgba(234, 238, 242, 0.2)"}}>
-        {/* <section className="settings" style={{...gridItem}}> */}
-          {/* <section style={gridItemContent}> */}
-            {/* <h3 style={gridItemContentHeading}>...</h3> */}
-            {/* <ul style={{...gridItemContentBody, columnCount: 2}}> */}
-              {/* <button style={{ padding: "10px"}}>I don't do anything yet</button> */}
-              {/* <button style={{ padding: "10px"}}>Me neither</button> */}
-            {/* </ul> */}
-          {/* </section> */}
         </section>
-        {/* <aside className="projects" style={{...gridItem, gridColumn: "3 / 5", gridRow: "2 / 4"}}> */}
         <aside className="projects" style={{...gridItem, position: "relative"}}>
-          {/* <section style={gridItemContent}> */}
             <h3>Projects</h3>
             <div style={{marginTop: "12px", borderRadius: "10px",
               border: "1px solid rgba(211,213,215,1)", height: "64%"}}></div>
@@ -245,37 +222,24 @@ const IndexPage: React.FC<PageProps> = () => {
                   position: "absolute",
                   left: "22px",
                   bottom: "22px",
-                  // height: "17%",
                   height: "60px",
                   width: "calc(100% - 44px)",
-                  // background: "rgba(246,245,244,)",
-                  // background: "#fff",
                   display: "flex",
                   alignItems: "center",
                   padding: "2px",
-                  // border: "1px solid rgba(211,213,215,1)"
-                  // boxShadow: "0 0 5px 0 rgba(0,0,0,0.2)",
                 }}>
               {projectsList.map((project, index) => {
                 return (
                   <StyledRectangle
                     key={index}
-                    // style={{ color: "white", border: "1px solid #333", cursor: "pointer", 
-                    //     background: "chocolate", padding: "6px", borderRadius: "5px", marginLeft: "10px", display: "flex", justifyContent: "center", alignItems: "flex-end"
-                    // }}
                     text={project.title}
-                    // background="rgba(242, 176, 61, .7)"
                     color="51, 51, 51"
                   ></StyledRectangle>
                 )
               })}
             </ul>
-          {/* </section> */}
         </aside>
-        {/* <section className="tech" style={{...gridItem, gridColumn: "1 / 3", gridRow: "4 / 5"}}> */}
         <section className="tech" style={{...gridItem, display: "flex"}}>
-          {/* <section style={gridItemContent}> */}
-            {/* <h3 style={{...gridItemContentHeading, marginTop: "8px"}}>Tech</h3> */}
             <ul style={{...gridItemContentBody, listStyleType: "none", paddingTop: "0"}}>
               {skills.map((skill, index) => {
                 return (
@@ -283,29 +247,21 @@ const IndexPage: React.FC<PageProps> = () => {
                 )
               })}
             </ul>
-          {/* </section> */}
         </section >
-        {/* <section className="block-6" style={{...gridItem, gridColumn: "3 / 4", gridRow: "4 / 5"}}> */}
         <section className="block-6" style={{...gridItem, background: "rgba(234, 238, 242, 0.2)", border: "1px solid rgba(211,213,215,0.2)"}}>
-          {/* <section style={gridItemContent}> */}
             <h3></h3>
             <div style={gridItemContentBody}></div>
-          {/* </section> */}
         </section>
-        {/* <footer className="contact" style={{...gridItem, gridColumn: "4 / 5", gridRow: "4 / 5"}}> */}
         <section
           className="contact"
           style={{...gridItem, display: "flex", alignItems: "center", 
                   background: "rgba(234, 238, 242, 0.5)", border: "1px solid rgba(211,213,215,0.2)"
                 }}
         >
-          {/* <h3 style={gridItemContentHeading}>Find Me</h3> */}
-          {/* <div style={{  background: "rgba(234,238,242, 0.5)", border: "1px solid rgba(211,213,215,0.9)", padding: "1.5rem", borderRadius: "10px"}}> */}
           <ul 
             style={{
               ...gridItemContentBody,
               listStyleType: "none",
-              // columnCount: 2
               width: "100%",
               display: "flex",
               justifyContent: "space-between",
@@ -346,7 +302,6 @@ const IndexPage: React.FC<PageProps> = () => {
               )
             })}
           </ul>
-          {/* </div> */}
         </section>
       </main>
     </div>
