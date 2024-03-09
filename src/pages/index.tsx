@@ -45,11 +45,12 @@ const contactIcons = [
 const mainWrappeDesktopr: React.CSSProperties = {
   display: "grid",
   gap: "1.25rem",
-  height: "90vh",
+  // height: "90vh",
 }
 
 const gridItem = {
   padding: "1.5rem",
+  // padding: "22px",
   borderRadius: "10px",
   background: "rgba(234,238,242, 0.5)",
   border: "1px solid rgba(211,213,215,0.9)",
@@ -101,17 +102,6 @@ interface StyledRectangleProps {
   onMouseLeave?: () => void;
   href?: string;
 }
-
-// const RectActionComp = (props: RectButtonProps): JSX.Element => {
-//   return (
-//     <>
-//       {props.isLink ? 
-//         <li style={rectButton}><a style={{ color: "#fff", textDecoration: "none"}} href={props.href}>{props.text}</a></li> :
-//         <button style={rectButton}>{props.text}</button>
-//       }
-//     </>
-//   )
-// }
 
 const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
   const background = props.background ? props.background : `rgba(${props.color}, 0.2)`;
@@ -201,17 +191,13 @@ const IndexPage: React.FC<PageProps> = () => {
         <aside className="projects" style={{...gridItem, position: "relative"}}>
             <h3>Projects</h3>
             <div style={{marginTop: "12px", borderRadius: "10px",
-              border: "1px solid rgba(211,213,215,1)", height: "64%"}}></div>
+              border: "1px solid rgba(211,213,215,1)"}}></div>
             <ul style={{ 
                   borderRadius: "10px",
-                  position: "absolute",
-                  left: "22px",
-                  bottom: "22px",
-                  height: "60px",
                   width: "calc(100% - 44px)",
                   display: "flex",
                   alignItems: "center",
-                  padding: "2px",
+                  padding: "2px"
                 }}>
               {projectsList.map((project, index) => {
                 return (
