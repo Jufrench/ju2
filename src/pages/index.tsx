@@ -11,13 +11,13 @@ const projectList = [
     id: 0,
     title: "Jotty",
     description: "A note taking app in the form of a rich text editor built with React, TypeScript, & Next.js.",
-    link: "https://jotty.vercel.app"
+    link: "https://jotty-pink.vercel.app/"
   },
   {
     id: 1,
     title: "Vuu-do",
     description: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, Vite for bundling, and Next.js.",
-    link: "https://vuu-do.vercel.app"
+    link: null
   },
 ];
 
@@ -123,12 +123,9 @@ const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
         boxShadow: "0 0 1px 0 rgba(0,0,0,0.1)",
       }}
       onClick={() => {
-        // debugger;
-        const projectIndex = projectList.findIndex(project => {
-          console.log('%cproject:', 'color:gold', project)
-          return project.title === props.text
-        });
-        props.onClick(projectIndex);
+        // const projectIndex = projectList.findIndex(project => project.title === props.text);
+        props.onClick(projectList.findIndex(project => project.title === props.text));
+        // props.onClick(projectIndex);
       }}>
         {props.text}
     </button>
@@ -141,19 +138,6 @@ interface ProjectInfoProps {
 }
 
 const ProjectInfo = (props: ProjectInfoProps): JSX.Element => {
-  console.group('%cconst ProjectInfo', 'color:tomato');
-  console.log('props', props)
-  console.log('title', projectList[props.activeProjectId].title)
-  console.log('props.activeProjectId', props.activeProjectId)
-  console.groupEnd();
-  // const title = projectList[props.activeProjectId ?? 0].title;
-
-  // return (
-  //   <>
-  //     <h4>{projectList[props.activeProjectId ?? 0].title}</h4>
-  //     <p></p>
-  //   </>
-  // )
   const activeProject = projectList[props.activeProjectId];
   
   return (
@@ -163,33 +147,36 @@ const ProjectInfo = (props: ProjectInfoProps): JSX.Element => {
         <>
           <h4 style={{marginBottom: ".75rem"}}>{activeProject.title}</h4>
           <p style={{marginBottom: ".75rem"}}>{activeProject.description}</p>
-          <a href={activeProject.link}>{activeProject.link}</a>
+          {activeProject.link !== null
+            ? <a style={{textDecoration: "none"}} href={activeProject.link} target="_blank">Go to Project ➡</a>
+            : <p>Coming soon!</p>
+          }
         </>
       }
     </>
   )
 };
 
-const tabletStyles = {};
-const desktopStyles = {};
-const largeDesktopStyles = {};
+// const tabletStyles = {};
+// const desktopStyles = {};
+// const largeDesktopStyles = {};
 
-const useQuery = (query: string) => {
-  const [matches, setMatches] = useState(false)
-  const handleChange = (e: MediaQueryListEvent) => setMatches(e.matches)
+// const useQuery = (query: string) => {
+//   const [matches, setMatches] = useState(false)
+//   const handleChange = (e: MediaQueryListEvent) => setMatches(e.matches)
 
-  useEffect(() => {
-    const m = window.matchMedia(query);
-    setMatches(m.matches)
-    m.addEventListener('change', handleChange);
+//   useEffect(() => {
+//     const m = window.matchMedia(query);
+//     setMatches(m.matches)
+//     m.addEventListener('change', handleChange);
 
-    return () => {
-      m.removeEventListener('change', handleChange);
-    }
-  }, []);
+//     return () => {
+//       m.removeEventListener('change', handleChange);
+//     }
+//   }, []);
 
-  return matches;
-}
+//   return matches;
+// }
 
 const IndexPage: React.FC<PageProps> = () => {
   const [activeProjectId, setActiveProjectId] = useState<number>(0);
