@@ -4,10 +4,6 @@
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-
 .content-wrapper {
   padding: 1rem 0;
 }
@@ -18,17 +14,17 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-.intro {}
+/* .intro {}
 .theme {}
-.settings {}
+.settings {} */
 .projects > div {
   height: 175px;
 }
 .projects > ul {
   margin-top: .75rem;
 }
-.tech {}
-.block-6 {}
+/* .tech {}
+.block-6 {} */
 .contact ul {
   width: 100%;
   display: flex;
