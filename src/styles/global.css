@@ -29,7 +29,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .tech {}
 .block-6 {}
-.contact {}
+.contact ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
 @media screen and (min-width: 768px) {
   .content-wrapper {
@@ -89,6 +93,12 @@ h1, h2, h3, h4, h5, h6 {
   .contact {
     grid-column: 4 / 5;
     grid-row: 4 / 5;
+  }
+
+  .contact ul {
+    display: block;
+    column-count: 2;
+    text-align: center;
   }
 }
 

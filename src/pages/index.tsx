@@ -6,14 +6,16 @@ import email from "../images/email.svg";
 import kofi from "../images/ko-fi.svg";
 import React from "react";
 
-const projectsList = [
+const projectList = [
   {
+    id: 0,
     title: "Jotty",
-    description: "A note taking app in the form of a rich text editor built with React, & TypeScript.",
+    description: "A note taking app in the form of a rich text editor built with React, TypeScript, & Next.js.",
   },
   {
+    id: 1,
     title: "Vuu-do",
-    desctription: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, and Vite for bundling",
+    desctription: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, Vite for bundling, and Next.js.",
   },
 ];
 
@@ -101,6 +103,7 @@ interface StyledRectangleProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   href?: string;
+  onClick: (id: number) => void;
 }
 
 const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
@@ -108,15 +111,31 @@ const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
   const color = props.color ? `rgba(${props.color}, 2)` : "unset";
 
   return (
-    <button style={{...rectButton, background: background, 
-      fontWeight: "bold",
-      color: color,
-      border: `1px solid rgba(${props.color}, 0.3)`,
-      height: "40px",
-      padding: "5px 16px",
-      boxShadow: "1px 0 5px 0 rgba(0,0,0,0.2)",
-    }}>{props.text}</button>
+    <button
+      style={{...rectButton, background: background, 
+        fontWeight: "bold",
+        color: color,
+        border: `1px solid rgba(${props.color}, 0.3)`,
+        height: "40px",
+        padding: "5px 16px",
+        boxShadow: "0 0 1px 0 rgba(0,0,0,0.1)",
+      }}
+      onClick={() => {
+        const projectIndex = projectList.findIndex(project => project.title === props.text);
+        props.onClick(projectIndex);
+      }}>
+        {props.text}
+    </button>
   )
+}
+
+interface ProjectInfoProps {
+  activeProject: number | undefined;
+}
+
+const ProjectInfo = (props: ProjectInfoProps): JSX.Element => {
+  console.log('%cactiveProject', 'color:tomato', props.activeProject)
+  return <div>{props.activeProject}</div>
 }
 
 const tabletStyles = {};
@@ -141,6 +160,7 @@ const useQuery = (query: string) => {
 }
 
 const IndexPage: React.FC<PageProps> = () => {
+  const [activeProject, setActiveProject] = useState<number | undefined>(0);
   // mobile - do nothing
   // tablet - min width 768
   // desktop - min width 1024
@@ -150,12 +170,17 @@ const IndexPage: React.FC<PageProps> = () => {
   const isDesktop = useQuery("(min-width: 1024px)");
   const isLargeDesktop = useQuery("(min-width: 1440px)");
 
-  console.group('%csizing', 'color:tomato');
-  console.log('Is Mobile', isMobile);
-  console.log('Is Tablet', isTablet);
-  console.log('Is Desktop', isDesktop);
-  console.log('Is largetDesktop', isLargeDesktop);
-  console.groupEnd()
+  // console.group('%csizing', 'color:tomato');
+  // console.log('Is Mobile', isMobile);
+  // console.log('Is Tablet', isTablet);
+  // console.log('Is Desktop', isDesktop);
+  // console.log('Is largetDesktop', isLargeDesktop);
+  // console.groupEnd()
+
+  const handleSetActiveProject = (id: number) => {
+    console.log('%cid', 'text-decoration: underline', id)
+    setActiveProject(id);
+  }
 
   return (
     <div className="content-wrapper">
@@ -190,8 +215,9 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <aside className="projects" style={{...gridItem, position: "relative"}}>
             <h3>Projects</h3>
-            <div style={{marginTop: "12px", borderRadius: "10px",
-              border: "1px solid rgba(211,213,215,1)"}}></div>
+            <div style={{marginTop: "12px", borderRadius: "10px", border: "1px solid rgba(211,213,215,1)"}}>
+              <ProjectInfo activeProject={activeProject} />
+            </div>
             <ul style={{ 
                   borderRadius: "10px",
                   width: "calc(100% - 44px)",
@@ -199,13 +225,9 @@ const IndexPage: React.FC<PageProps> = () => {
                   alignItems: "center",
                   padding: "2px"
                 }}>
-              {projectsList.map((project, index) => {
+              {projectList.map((project, index) => {
                 return (
-                  <StyledRectangle
-                    key={index}
-                    text={project.title}
-                    color="51, 51, 51"
-                  ></StyledRectangle>
+                  <StyledRectangle key={index} text={project.title} onClick={handleSetActiveProject} />
                 )
               })}
             </ul>
@@ -236,9 +258,9 @@ const IndexPage: React.FC<PageProps> = () => {
             style={{
               ...gridItemContentBody,
               listStyleType: "none",
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
+              // width: "100%",
+              // display: "flex",
+              // justifyContent: "space-between",
             }}>
             {contactIcons.map((contact, index) => {
               return (
