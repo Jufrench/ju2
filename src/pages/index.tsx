@@ -6,14 +6,18 @@ import email from "../images/email.svg";
 import kofi from "../images/ko-fi.svg";
 import React from "react";
 
-const projectsList = [
+const projectList = [
   {
+    id: 0,
     title: "Jotty",
-    description: "A note taking app in the form of a rich text editor built with React, & TypeScript.",
+    description: "A note taking app in the form of a rich text editor built with React, TypeScript, & Next.js.",
+    link: "https://jotty.vercel.app"
   },
   {
+    id: 1,
     title: "Vuu-do",
-    desctription: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, and Vite for bundling",
+    description: "A to-do list app with a Vue.js & TypeScript frontend, a Node.js backend, Vite for bundling, and Next.js.",
+    link: "https://vuu-do.vercel.app"
   },
 ];
 
@@ -101,6 +105,7 @@ interface StyledRectangleProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   href?: string;
+  onClick: (id: number) => void;
 }
 
 const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
@@ -108,16 +113,62 @@ const StyledRectangle = (props: StyledRectangleProps): JSX.Element => {
   const color = props.color ? `rgba(${props.color}, 2)` : "unset";
 
   return (
-    <button style={{...rectButton, background: background, 
-      fontWeight: "bold",
-      color: color,
-      border: `1px solid rgba(${props.color}, 0.3)`,
-      height: "40px",
-      padding: "5px 16px",
-      boxShadow: "1px 0 5px 0 rgba(0,0,0,0.2)",
-    }}>{props.text}</button>
+    <button
+      style={{...rectButton, background: background, 
+        fontWeight: "bold",
+        color: color,
+        border: `1px solid rgba(${props.color}, 0.3)`,
+        height: "40px",
+        padding: "5px 16px",
+        boxShadow: "0 0 1px 0 rgba(0,0,0,0.1)",
+      }}
+      onClick={() => {
+        // debugger;
+        const projectIndex = projectList.findIndex(project => {
+          console.log('%cproject:', 'color:gold', project)
+          return project.title === props.text
+        });
+        props.onClick(projectIndex);
+      }}>
+        {props.text}
+    </button>
   )
 }
+
+interface ProjectInfoProps {
+  activeProjectId: number;
+  style?: React.CSSProperties;
+}
+
+const ProjectInfo = (props: ProjectInfoProps): JSX.Element => {
+  console.group('%cconst ProjectInfo', 'color:tomato');
+  console.log('props', props)
+  console.log('title', projectList[props.activeProjectId].title)
+  console.log('props.activeProjectId', props.activeProjectId)
+  console.groupEnd();
+  // const title = projectList[props.activeProjectId ?? 0].title;
+
+  // return (
+  //   <>
+  //     <h4>{projectList[props.activeProjectId ?? 0].title}</h4>
+  //     <p></p>
+  //   </>
+  // )
+  const activeProject = projectList[props.activeProjectId];
+  
+  return (
+    <>
+      {props.activeProjectId === undefined ? 
+        <p>Click a project to get started...</p> :
+        <>
+          <h4 style={{marginBottom: ".75rem"}}>{activeProject.title}</h4>
+          <p style={{marginBottom: ".75rem"}}>{activeProject.description}</p>
+          <a href={activeProject.link}>{activeProject.link}</a>
+        </>
+      }
+    </>
+  )
+};
 
 const tabletStyles = {};
 const desktopStyles = {};
@@ -141,21 +192,18 @@ const useQuery = (query: string) => {
 }
 
 const IndexPage: React.FC<PageProps> = () => {
-  // mobile - do nothing
-  // tablet - min width 768
-  // desktop - min width 1024
-  // large desktop - min width 1440
-  const isMobile = useQuery("(max-width: 767px)");
-  const isTablet = useQuery("(min-width: 768px)");
-  const isDesktop = useQuery("(min-width: 1024px)");
-  const isLargeDesktop = useQuery("(min-width: 1440px)");
+  const [activeProjectId, setActiveProjectId] = useState<number>(0);
+  // const isMobile = useQuery("(max-width: 767px)"); // mobile - do nothing
+  // const isTablet = useQuery("(min-width: 768px)"); // tablet - min width 768
+  // const isDesktop = useQuery("(min-width: 1024px)"); // desktop - min width 1024
+  // const isLargeDesktop = useQuery("(min-width: 1440px)"); // large desktop - min width 1440
 
-  console.group('%csizing', 'color:tomato');
-  console.log('Is Mobile', isMobile);
-  console.log('Is Tablet', isTablet);
-  console.log('Is Desktop', isDesktop);
-  console.log('Is largetDesktop', isLargeDesktop);
-  console.groupEnd()
+  const handleSetActiveProject = (id: number) => {
+    console.log('%cid', 'text-decoration: underline', id)
+    setActiveProjectId(id);
+  }
+
+  console.log('%cactiveProjectId', 'color:dodgerblue', activeProjectId)
 
   return (
     <div className="content-wrapper">
@@ -190,8 +238,9 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <aside className="projects" style={{...gridItem, position: "relative"}}>
             <h3>Projects</h3>
-            <div style={{marginTop: "12px", borderRadius: "10px",
-              border: "1px solid rgba(211,213,215,1)"}}></div>
+            <div style={{marginTop: "12px", borderRadius: "10px", padding: ".75rem", border: "1px solid rgba(211,213,215,1)"}}>
+              <ProjectInfo activeProjectId={activeProjectId} />
+            </div>
             <ul style={{ 
                   borderRadius: "10px",
                   width: "calc(100% - 44px)",
@@ -199,13 +248,9 @@ const IndexPage: React.FC<PageProps> = () => {
                   alignItems: "center",
                   padding: "2px"
                 }}>
-              {projectsList.map((project, index) => {
+              {projectList.map((project, index) => {
                 return (
-                  <StyledRectangle
-                    key={index}
-                    text={project.title}
-                    color="51, 51, 51"
-                  ></StyledRectangle>
+                  <StyledRectangle key={index} text={project.title} onClick={handleSetActiveProject} />
                 )
               })}
             </ul>
@@ -233,13 +278,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 }}
         >
           <ul 
-            style={{
-              ...gridItemContentBody,
-              listStyleType: "none",
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-            }}>
+            style={{...gridItemContentBody, listStyleType: "none"}}>
             {contactIcons.map((contact, index) => {
               return (
                 <li key={index}>
@@ -247,32 +286,6 @@ const IndexPage: React.FC<PageProps> = () => {
                     <img src={contact.icon} alt={contact.name} style={{width: "22px", height: "22px"}} />
                   </a>
                 </li>
-                // ==============
-                // <object key={index} type="image/svg+xml" data={contact.icon} style={{width: "20", height: "20"}}>
-                //   <style>{`
-                //     object svg path {
-                //       fill: tomato;
-                //       display: none;
-                //     }
-                //   `}</style>
-                // </object>
-                // <li style={{width: "50px", height: "50px"}}>
-                //   <a key={index} href={contact.link} target="_blank" 
-                //     style={{
-                //       textDecoration: "none",
-                //       color: "rgba(51,51,51,0.8)",
-                //       display: "inline-block",
-                //       width: "24px",
-                //       height: "24px",
-                //     }}
-                //   >
-                //     <svg preserveAspectRatio="none" style={{border: "1px solid tomato"}} viewBox="0 0 100% 100%" xmlns="http://www.w3.org/2000/svg">
-                //       <path fill-rule="evenodd" clip-rule="evenodd"
-                //         d={contact.svgDAttribute}
-                //         fill="#24292f" />
-                //     </svg>
-                //   </a>
-                // </li>
               )
             })}
           </ul>
